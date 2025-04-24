@@ -215,9 +215,10 @@
     }
     /* Animations */
    <style>
+  .<style>
   .product-categories {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 0;
   }
   .product-card {
@@ -227,6 +228,7 @@
     border: 1px solid #eee;
     border-radius: 0;
     box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    opacity: 0;
     animation: fadeRandom 0.6s ease forwards;
   }
   .product-card h3 {
@@ -238,27 +240,6 @@
     font-size: 14px;
     color: #444;
   }
-  .product-card:nth-child(1) { animation-delay: 0.3s; }
-  .product-card:nth-child(7) { animation-delay: 0.6s; }
-  .product-card:nth-child(13) { animation-delay: 0.9s; }
-  .product-card:nth-child(4) { animation-delay: 1.2s; }
-  .product-card:nth-child(10) { animation-delay: 1.5s; }
-  .product-card:nth-child(16) { animation-delay: 1.8s; }
-  .product-card:nth-child(2) { animation-delay: 2.1s; }
-  .product-card:nth-child(8) { animation-delay: 2.4s; }
-  .product-card:nth-child(14) { animation-delay: 2.7s; }
-  .product-card:nth-child(5) { animation-delay: 3.0s; }
-  .product-card:nth-child(11) { animation-delay: 3.3s; }
-  .product-card:nth-child(17) { animation-delay: 3.6s; }
-  .product-card:nth-child(3) { animation-delay: 3.9s; }
-  .product-card:nth-child(9) { animation-delay: 4.2s; }
-  .product-card:nth-child(15) { animation-delay: 4.5s; }
-  .product-card:nth-child(6) { animation-delay: 4.8s; }
-  .product-card:nth-child(12) { animation-delay: 5.1s; }
-  .product-card:nth-child(18) { animation-delay: 5.4s; }
-  .product-card:nth-child(19) { animation-delay: 5.7s; }
-  .product-card:nth-child(20) { animation-delay: 6.0s; }
-
   @keyframes fadeRandom {
     from {
       opacity: 0;
@@ -269,7 +250,16 @@
       transform: scale(1);
     }
   }
-</style>
+  .product-card {
+    animation-delay: calc(var(--random-delay) * 1s);
+  }
+<script>
+  const cards = document.querySelectorAll('.product-card');
+  cards.forEach(card => {
+    card.style.setProperty('--random-delay', (Math.random() * 3).toFixed(2));
+  });
+</script>
+
   .cert-card {
     opacity: 0;
     transform: translateY(20px);
@@ -458,30 +448,29 @@
 <!-- Product Showcase Section -->
 <section style="padding: 60px 80px; background-color: #ffffff;">
   <h2 style="text-align: center; font-size: 32px; color: #1d3b18; margin-bottom: 40px;">Product Showcase</h2>
-  <div class="product-categories" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px;">
-    <div class="product-card animated-tile"><h3>Herbal Teas</h3><p>Soothing, organic infusions sourced directly from certified farms.</p></div>
-    <div class="product-card animated-tile"><h3>Hair Masks</h3><p>Nourishing, Ayurveda-inspired masks for deep root rejuvenation.</p></div>
-    <div class="product-card animated-tile"><h3>Oils</h3><p>Cold-pressed and essential oils for cosmetic and wellness use.</p></div>
-    <div class="product-card animated-tile"><h3>Herbal Powders</h3><p>Finely milled botanicals ideal for blends, capsules, or topical use.</p></div>
-    <div class="product-card animated-tile"><h3>Extracts</h3><p>Concentrated herbal goodness for formulation-ready solutions.</p></div>
-    <div class="product-card animated-tile"><h3>Capsules</h3><p>Encapsulated wellness ingredients tailored for holistic health.</p></div>
-    <div class="product-card animated-tile"><h3>Teabags</h3><p>Single-serve herbal teas for convenience and consistent quality.</p></div>
-    <div class="product-card animated-tile"><h3>Seasonal Herbs</h3><p>Farm-fresh Ayurvedic herbs curated per seasonal availability.</p></div>
-    <div class="product-card animated-tile"><h3>Essential Oils</h3><p>Therapeutic-grade oils distilled from premium botanicals.</p></div>
-    <div class="product-card animated-tile"><h3>Spices</h3><p>Whole and ground spices grown organically and responsibly sourced.</p></div>
-    <div class="product-card animated-tile"><h3>Superfoods</h3><p>Nutrient-dense ingredients to elevate holistic nutrition profiles.</p></div>
-    <div class="product-card animated-tile"><h3>Ready Mixes</h3><p>Pre-blended ingredient formulas for efficient formulation.</p></div>
-    <div class="product-card animated-tile"><h3>Churnas</h3><p>Traditional Ayurvedic herbal blends for wellness support.</p></div>
-    <div class="product-card animated-tile"><h3>Edible Flowers</h3><p>Visual and aromatic enhancement for teas and culinary use.</p></div>
-    <div class="product-card animated-tile"><h3>Carrier Oils</h3><p>Organic base oils for blending with essential oils.</p></div>
-    <div class="product-card animated-tile"><h3>Gummies</h3><p>Delicious functional formats for herbal delivery.</p></div>
-    <div class="product-card animated-tile"><h3>Detox Blends</h3><p>Herbal formulas aimed at holistic cleansing and purification.</p></div>
-    <div class="product-card animated-tile"><h3>Adaptogens</h3><p>Stress-balancing herbs recognized in Ayurvedic tradition.</p></div>
-    <div class="product-card animated-tile"><h3>Personal Care Powders</h3><p>Ingredients for natural skin and hair care applications.</p></div>
-    <div class="product-card animated-tile"><h3>Ayurvedic Sweeteners</h3><p>Natural sugar alternatives aligned with wellness goals.</p></div>
+  <div class="product-categories">
+    <div class="product-card"><h3>Herbal Teas</h3><p>Soothing, organic infusions sourced directly from certified farms.</p></div>
+    <div class="product-card"><h3>Hair Masks</h3><p>Nourishing, Ayurveda-inspired masks for deep root rejuvenation.</p></div>
+    <div class="product-card"><h3>Oils</h3><p>Cold-pressed and essential oils for cosmetic and wellness use.</p></div>
+    <div class="product-card"><h3>Herbal Powders</h3><p>Finely milled botanicals ideal for blends, capsules, or topical use.</p></div>
+    <div class="product-card"><h3>Extracts</h3><p>Concentrated herbal goodness for formulation-ready solutions.</p></div>
+    <div class="product-card"><h3>Capsules</h3><p>Encapsulated wellness ingredients tailored for holistic health.</p></div>
+    <div class="product-card"><h3>Teabags</h3><p>Single-serve herbal teas for convenience and consistent quality.</p></div>
+    <div class="product-card"><h3>Seasonal Herbs</h3><p>Farm-fresh Ayurvedic herbs curated per seasonal availability.</p></div>
+    <div class="product-card"><h3>Essential Oils</h3><p>Therapeutic-grade oils distilled from premium botanicals.</p></div>
+    <div class="product-card"><h3>Spices</h3><p>Whole and ground spices grown organically and responsibly sourced.</p></div>
+    <div class="product-card"><h3>Superfoods</h3><p>Nutrient-dense ingredients to elevate holistic nutrition profiles.</p></div>
+    <div class="product-card"><h3>Ready Mixes</h3><p>Pre-blended ingredient formulas for efficient formulation.</p></div>
+    <div class="product-card"><h3>Churnas</h3><p>Traditional Ayurvedic herbal blends for wellness support.</p></div>
+    <div class="product-card"><h3>Edible Flowers</h3><p>Visual and aromatic enhancement for teas and culinary use.</p></div>
+    <div class="product-card"><h3>Carrier Oils</h3><p>Organic base oils for blending with essential oils.</p></div>
+    <div class="product-card"><h3>Gummies</h3><p>Delicious functional formats for herbal delivery.</p></div>
+    <div class="product-card"><h3>Detox Blends</h3><p>Herbal formulas aimed at holistic cleansing and purification.</p></div>
+    <div class="product-card"><h3>Adaptogens</h3><p>Stress-balancing herbs recognized in Ayurvedic tradition.</p></div>
+    <div class="product-card"><h3>Personal Care Powders</h3><p>Ingredients for natural skin and hair care applications.</p></div>
+    <div class="product-card"><h3>Ayurvedic Sweeteners</h3><p>Natural sugar alternatives aligned with wellness goals.</p></div>
   </div>
 </section>
-
 <!-- Product Categories -->
 <section class="product-categories">
   <div class="product-card">
