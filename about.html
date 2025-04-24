@@ -12,22 +12,39 @@
       background: #ffffff;
       color: #1d1d1d;
     }
-    header, footer {
-      background-color: #ffffff;
-      padding: 20px 80px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    }
+    header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 80px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
     .header-logo img {
-      height: 50px;
+  height: 50px;
+  content: url("Cultivators Logo New.png");
+}
+
+    nav.header-menu {
+      display: flex;
+      gap: 25px;
     }
-    .header-menu a {
-      margin-left: 20px;
+    nav.header-menu a {
       text-decoration: none;
-      color: #1d1d1d;
+      color: #0f3b2d;
       font-weight: 600;
+      font-size: 16px;
+    }
+    .cta-header a {
+      padding: 10px 20px;
+      background-color: #0f3b2d;
+      color: #fff;
+      border-radius: 30px;
+      font-size: 14px;
+      text-decoration: none;
     }
     .about-section,
     .timeline,
@@ -127,17 +144,39 @@
 </head>
 <body>
   <!-- Header -->
-  <header>
-    <div class="header-logo">
-      <img src="Cultivators Logo New.png" alt="Cultivator Logo">
-    </div>
+ <header>
+  <div style="display: flex; align-items: center; justify-content: flex-start; gap: 60px; width: 100%;">
+    <img src="Cultivators Logo New.png" style="height: 50px;" alt="Cultivator Logo" style="height: 50px;">
     <nav class="header-menu">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="#">Products</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
+  <div class="dropdown">
+    <a href="#">Company ▼</a>
+    <div class="dropdown-content">
+      <a href="#">Certifications & Compliance</a>
+      <a href="#">Manufacturing & Quality</a>
+      <a href="#">Sustainability</a>
+      <a href="#">Global Presence / Distribution</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <a href="#">Ingredient Portfolio ▼</a>
+    <div class="dropdown-content">
+      <a href="#">Herbal Teas</a>
+      <a href="#">Hair Masks</a>
+      <a href="#">Oils</a>
+    </div>
+  </div>
+  <a href="about.html">About us</a>
+  <a href="#">Resources / Blog</a>
+  <a href="#">News & Insights</a>
+  <a href="#">Contact Us</a>
+      
+</nav>
+  </div>
+  <div style="display: none;"></div>
+    <img src="flag-uk.png" alt="English" style="height: 18px;">
+    <img src="flag-in.png" alt="Hindi" style="height: 18px;">
+  </div>
+</header>
 
   <!-- About Us Summary -->
   <section class="about-section">
