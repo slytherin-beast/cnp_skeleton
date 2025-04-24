@@ -214,29 +214,60 @@
       display: inline-block;
     }
     /* Animations */
-  .animated-tile {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.6s ease forwards;
-    animation-delay: calc(0.1s * var(--i));
+   .product-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
   }
-  .animated-tile:nth-child(odd) {
-    animation-delay: calc(0.15s * var(--i));
+  .product-card {
+    padding: 30px;
+    text-align: center;
+    background: #ffffff;
+    border: 1px solid #eee;
+    border-radius: 0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    animation: fadeRandom 0.6s ease forwards;
   }
-  @keyframes fadeInUp {
+  .product-card h3 {
+    font-size: 18px;
+    color: var(--cultivator-green);
+    margin-bottom: 10px;
+  }
+  .product-card p {
+    font-size: 14px;
+    color: #444;
+  }
+  .product-card:nth-child(1) { animation-delay: 0.3s; }
+  .product-card:nth-child(7) { animation-delay: 0.6s; }
+  .product-card:nth-child(13) { animation-delay: 0.9s; }
+  .product-card:nth-child(4) { animation-delay: 1.2s; }
+  .product-card:nth-child(10) { animation-delay: 1.5s; }
+  .product-card:nth-child(16) { animation-delay: 1.8s; }
+  .product-card:nth-child(2) { animation-delay: 2.1s; }
+  .product-card:nth-child(8) { animation-delay: 2.4s; }
+  .product-card:nth-child(14) { animation-delay: 2.7s; }
+  .product-card:nth-child(5) { animation-delay: 3.0s; }
+  .product-card:nth-child(11) { animation-delay: 3.3s; }
+  .product-card:nth-child(17) { animation-delay: 3.6s; }
+  .product-card:nth-child(3) { animation-delay: 3.9s; }
+  .product-card:nth-child(9) { animation-delay: 4.2s; }
+  .product-card:nth-child(15) { animation-delay: 4.5s; }
+  .product-card:nth-child(6) { animation-delay: 4.8s; }
+  .product-card:nth-child(12) { animation-delay: 5.1s; }
+  .product-card:nth-child(18) { animation-delay: 5.4s; }
+  .product-card:nth-child(19) { animation-delay: 5.7s; }
+  .product-card:nth-child(20) { animation-delay: 6.0s; }
+
+  @keyframes fadeRandom {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: scale(1);
     }
   }
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
   .cert-card {
     opacity: 0;
     transform: translateY(20px);
@@ -434,7 +465,6 @@
   </div>
 </section>
 
-<!-- Product Showcase Section -->
 <!-- Product Showcase Section -->
 <section style="padding: 60px 80px; background-color: #ffffff;">
   <h2 style="text-align: center; font-size: 32px; color: #1d3b18; margin-bottom: 40px;">Product Showcase</h2>
