@@ -1,0 +1,82 @@
+<style>
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 80px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    font-family: 'Segoe UI', sans-serif;
+  }
+  .header-menu {
+    display: flex;
+    gap: 25px;
+  }
+  .header-menu a {
+    text-decoration: none;
+    color: #0f3b2d;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1001;
+    top: 100%;
+  }
+  .dropdown-content a {
+    color: #0f3b2d;
+    padding: 10px 16px;
+    display: block;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .dropdown-content a:hover {
+    background-color: #f3f3f3;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+</style>
+
+<header>
+  <div style="display: flex; align-items: center; justify-content: flex-start; gap: 60px; width: 100%;">
+    <a href="index.html">
+      <img src="Cultivators Logo New.png" style="height: 50px;" alt="Cultivator Logo">
+    </a>
+    <nav class="header-menu">
+      <div class="dropdown">
+        <a href="#">Company ▼</a>
+        <div class="dropdown-content">
+          <a href="Certificate.html">Certifications & Compliance</a>
+          <a href="manufac.html">Manufacturing & Quality</a>
+          <a href="#">Sustainability</a>
+          <a href="#">Global Presence / Distribution</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="#">Ingredient Portfolio ▼</a>
+        <div class="dropdown-content">
+          <a href="#">Herbal Teas</a>
+          <a href="#">Hair Masks</a>
+          <a href="#">Oils</a>
+        </div>
+      </div>
+      <a href="about.html">About us</a>
+      <a href="#">Resources / Blog</a>
+      <a href="#">News & Insights</a>
+      <a href="#">Contact Us</a>
+    </nav>
+  </div>
+</header>
