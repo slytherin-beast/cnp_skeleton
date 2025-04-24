@@ -65,6 +65,32 @@
     .dropdown:hover .dropdown-content {
       display: block;
     }
+    .carousel-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 24px;
+      padding-bottom: 10px;
+      scroll-snap-type: x mandatory;
+    }
+    .carousel-container::-webkit-scrollbar {
+      height: 8px;
+    }
+    .carousel-container::-webkit-scrollbar-thumb {
+      background-color: #bbb;
+      border-radius: 4px;
+    }
+    .carousel-item {
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+      background: #fff;
+      border-top: 2px solid #0f3b2d;
+      border-left: 2px solid #0f3b2d;
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 4px 4px 0px #ccc;
+      width: 280px;
+    }
   </style>
 </head>
 <body>
@@ -192,75 +218,73 @@
 <section style="background-color: #f3f8f5; padding: 60px 40px;">
   <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 40px; max-width: 1200px; margin: auto;">
     <div style="flex: 1; min-width: 280px;">
-      <h2 style="font-size: 28px; font-weight: bold; color: #0f3b2d;">Downloadable Certifications</h2>
+      <h2 style="font-size: 28px; font-weight: bold; color: #0f3b2d; text-align: left;">Downloadable Certifications</h2>
       <p style="font-size: 16px; color: #444; max-width: 500px;">
         Download high-quality, ready-to-use certificates for your records, audits, or formulation approvals. Each file is formatted for clarity and compliance.
       </p>
     </div>
-    <div style="flex: 2; display: flex; overflow-x: auto; gap: 24px; padding-bottom: 10px;">
-      <!-- existing downloadable PDF cards go here -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px;">
-     <div style='border-top: 2px solid #0f3b2d; border-left: 2px solid #0f3b2d; border-radius: 16px; padding: 20px; box-shadow: 4px 4px 0px #ccc; text-align: center;'>
-        <img src='/images/pdf-icon.png' alt='PDF Icon' style='height: 48px; margin-bottom: 10px;'>
-        <h4 style='font-size: 16px; margin-bottom: 6px;'>PDF Title</h4>
-        <p style='font-size: 13px; color: #666;'>Description of this downloadable certificate or document.</p>
-        <a href='#' style='display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0f3b2d; color: #fff; border-radius: 30px; text-decoration: none;'>Download PDF</a>
+    <div class="carousel-container">
+      <div class="carousel-item">
+        <img src="/images/pdf-icon.png" alt="PDF Icon" style="height: 48px; margin-bottom: 10px;">
+        <h4 style="font-size: 16px; margin-bottom: 6px;">PDF Title</h4>
+        <p style="font-size: 13px; color: #666;">Description of this downloadable certificate or document.</p>
+        <a href="#" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0f3b2d; color: #fff; border-radius: 30px; text-decoration: none;">Download PDF</a>
       </div>
-      <div style='border-top: 2px solid #0f3b2d; border-left: 2px solid #0f3b2d; border-radius: 16px; padding: 20px; box-shadow: 4px 4px 0px #ccc; text-align: center;'>
-        <img src='/images/pdf-icon.png' alt='PDF Icon' style='height: 48px; margin-bottom: 10px;'>
-        <h4 style='font-size: 16px; margin-bottom: 6px;'>PDF Title</h4>
-        <p style='font-size: 13px; color: #666;'>Description of this downloadable certificate or document.</p>
-        <a href='#' style='display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0f3b2d; color: #fff; border-radius: 30px; text-decoration: none;'>Download PDF</a>
+      <div class="carousel-item">
+        <img src="/images/pdf-icon.png" alt="PDF Icon" style="height: 48px; margin-bottom: 10px;">
+        <h4 style="font-size: 16px; margin-bottom: 6px;">PDF Title</h4>
+        <p style="font-size: 13px; color: #666;">Description of this downloadable certificate or document.</p>
+        <a href="#" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0f3b2d; color: #fff; border-radius: 30px; text-decoration: none;">Download PDF</a>
       </div>
-      <div style='border-top: 2px solid #0f3b2d; border-left: 2px solid #0f3b2d; border-radius: 16px; padding: 20px; box-shadow: 4px 4px 0px #ccc; text-align: center;'>
-        <img src='/images/pdf-icon.png' alt='PDF Icon' style='height: 48px; margin-bottom: 10px;'>
-        <h4 style='font-size: 16px; margin-bottom: 6px;'>PDF Title</h4>
-        <p style='font-size: 13px; color: #666;'>Description of this downloadable certificate or document.</p>
-        <a href='#' style='display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0f3b2d; color: #fff; border-radius: 30px; text-decoration: none;'>Download PDF</a>
+      <div class="carousel-item">
+        <img src="/images/pdf-icon.png" alt="PDF Icon" style="height: 48px; margin-bottom: 10px;">
+        <h4 style="font-size: 16px; margin-bottom: 6px;">PDF Title</h4>
+        <p style="font-size: 13px; color: #666;">Description of this downloadable certificate or document.</p>
+        <a href="#" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0f3b2d; color: #fff; border-radius: 30px; text-decoration: none;">Download PDF</a>
       </div>
-      <div style='border-top: 2px solid #0f3b2d; border-left: 2px solid #0f3b2d; border-radius: 16px; padding: 20px; box-shadow: 4px 4px 0px #ccc; text-align: center;'>
-        <img src='/images/pdf-icon.png' alt='PDF Icon' style='height: 48px; margin-bottom: 10px;'>
-        <h4 style='font-size: 16px; margin-bottom: 6px;'>PDF Title</h4>
-        <p style='font-size: 13px; color: #666;'>Description of this downloadable certificate or document.</p>
-        <a href='#' style='display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0f3b2d; color: #fff; border-radius: 30px; text-decoration: none;'>Download PDF</a>
+      <div class="carousel-item">
+        <img src="/images/pdf-icon.png" alt="PDF Icon" style="height: 48px; margin-bottom: 10px;">
+        <h4 style="font-size: 16px; margin-bottom: 6px;">PDF Title</h4>
+        <p style="font-size: 13px; color: #666;">Description of this downloadable certificate or document.</p>
+        <a href="#" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0f3b2d; color: #fff; border-radius: 30px; text-decoration: none;">Download PDF</a>
       </div>
-      <div style='border-top: 2px solid #0f3b2d; border-left: 2px solid #0f3b2d; border-radius: 16px; padding: 20px; box-shadow: 4px 4px 0px #ccc; text-align: center;'>
-        <img src='/images/pdf-icon.png' alt='PDF Icon' style='height: 48px; margin-bottom: 10px;'>
-        <h4 style='font-size: 16px; margin-bottom: 6px;'>PDF Title</h4>
-        <p style='font-size: 13px; color: #666;'>Description of this downloadable certificate or document.</p>
-        <a href='#' style='display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0f3b2d; color: #fff; border-radius: 30px; text-decoration: none;'>Download PDF</a>
+      <div class="carousel-item">
+        <img src="/images/pdf-icon.png" alt="PDF Icon" style="height: 48px; margin-bottom: 10px;">
+        <h4 style="font-size: 16px; margin-bottom: 6px;">PDF Title</h4>
+        <p style="font-size: 13px; color: #666;">Description of this downloadable certificate or document.</p>
+        <a href="#" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0f3b2d; color: #fff; border-radius: 30px; text-decoration: none;">Download PDF</a>
       </div>
-      <div style='border-top: 2px solid #0f3b2d; border-left: 2px solid #0f3b2d; border-radius: 16px; padding: 20px; box-shadow: 4px 4px 0px #ccc; text-align: center;'>
-        <img src='/images/pdf-icon.png' alt='PDF Icon' style='height: 48px; margin-bottom: 10px;'>
-        <h4 style='font-size: 16px; margin-bottom: 6px;'>PDF Title</h4>
-        <p style='font-size: 13px; color: #666;'>Description of this downloadable certificate or document.</p>
-        <a href='#' style='display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0f3b2d; color: #fff; border-radius: 30px; text-decoration: none;'>Download PDF</a>
+      <div class="carousel-item">
+        <img src="/images/pdf-icon.png" alt="PDF Icon" style="height: 48px; margin-bottom: 10px;">
+        <h4 style="font-size: 16px; margin-bottom: 6px;">PDF Title</h4>
+        <p style="font-size: 13px; color: #666;">Description of this downloadable certificate or document.</p>
+        <a href="#" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0f3b2d; color: #fff; border-radius: 30px; text-decoration: none;">Download PDF</a>
       </div>
-      <div style='border-top: 2px solid #0f3b2d; border-left: 2px solid #0f3b2d; border-radius: 16px; padding: 20px; box-shadow: 4px 4px 0px #ccc; text-align: center;'>
-        <img src='/images/pdf-icon.png' alt='PDF Icon' style='height: 48px; margin-bottom: 10px;'>
-        <h4 style='font-size: 16px; margin-bottom: 6px;'>PDF Title</h4>
-        <p style='font-size: 13px; color: #666;'>Description of this downloadable certificate or document.</p>
-        <a href='#' style='display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0f3b2d; color: #fff; border-radius: 30px; text-decoration: none;'>Download PDF</a>
+      <div class="carousel-item">
+        <img src="/images/pdf-icon.png" alt="PDF Icon" style="height: 48px; margin-bottom: 10px;">
+        <h4 style="font-size: 16px; margin-bottom: 6px;">PDF Title</h4>
+        <p style="font-size: 13px; color: #666;">Description of this downloadable certificate or document.</p>
+        <a href="#" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0f3b2d; color: #fff; border-radius: 30px; text-decoration: none;">Download PDF</a>
       </div>
-      <div style='border-top: 2px solid #0f3b2d; border-left: 2px solid #0f3b2d; border-radius: 16px; padding: 20px; box-shadow: 4px 4px 0px #ccc; text-align: center;'>
-        <img src='/images/pdf-icon.png' alt='PDF Icon' style='height: 48px; margin-bottom: 10px;'>
-        <h4 style='font-size: 16px; margin-bottom: 6px;'>PDF Title</h4>
-        <p style='font-size: 13px; color: #666;'>Description of this downloadable certificate or document.</p>
-        <a href='#' style='display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0f3b2d; color: #fff; border-radius: 30px; text-decoration: none;'>Download PDF</a>
+      <div class="carousel-item">
+        <img src="/images/pdf-icon.png" alt="PDF Icon" style="height: 48px; margin-bottom: 10px;">
+        <h4 style="font-size: 16px; margin-bottom: 6px;">PDF Title</h4>
+        <p style="font-size: 13px; color: #666;">Description of this downloadable certificate or document.</p>
+        <a href="#" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0f3b2d; color: #fff; border-radius: 30px; text-decoration: none;">Download PDF</a>
       </div>
-      <div style='border-top: 2px solid #0f3b2d; border-left: 2px solid #0f3b2d; border-radius: 16px; padding: 20px; box-shadow: 4px 4px 0px #ccc; text-align: center;'>
-        <img src='/images/pdf-icon.png' alt='PDF Icon' style='height: 48px; margin-bottom: 10px;'>
-        <h4 style='font-size: 16px; margin-bottom: 6px;'>PDF Title</h4>
-        <p style='font-size: 13px; color: #666;'>Description of this downloadable certificate or document.</p>
-        <a href='#' style='display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0f3b2d; color: #fff; border-radius: 30px; text-decoration: none;'>Download PDF</a>
+      <div class="carousel-item">
+        <img src="/images/pdf-icon.png" alt="PDF Icon" style="height: 48px; margin-bottom: 10px;">
+        <h4 style="font-size: 16px; margin-bottom: 6px;">PDF Title</h4>
+        <p style="font-size: 13px; color: #666;">Description of this downloadable certificate or document.</p>
+        <a href="#" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0f3b2d; color: #fff; border-radius: 30px; text-decoration: none;">Download PDF</a>
       </div>
-      <div style='border-top: 2px solid #0f3b2d; border-left: 2px solid #0f3b2d; border-radius: 16px; padding: 20px; box-shadow: 4px 4px 0px #ccc; text-align: center;'>
-        <img src='/images/pdf-icon.png' alt='PDF Icon' style='height: 48px; margin-bottom: 10px;'>
-        <h4 style='font-size: 16px; margin-bottom: 6px;'>PDF Title</h4>
-        <p style='font-size: 13px; color: #666;'>Description of this downloadable certificate or document.</p>
-        <a href='#' style='display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0f3b2d; color: #fff; border-radius: 30px; text-decoration: none;'>Download PDF</a>
+      <div class="carousel-item">
+        <img src="/images/pdf-icon.png" alt="PDF Icon" style="height: 48px; margin-bottom: 10px;">
+        <h4 style="font-size: 16px; margin-bottom: 6px;">PDF Title</h4>
+        <p style="font-size: 13px; color: #666;">Description of this downloadable certificate or document.</p>
+        <a href="#" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0f3b2d; color: #fff; border-radius: 30px; text-decoration: none;">Download PDF</a>
       </div>
-    </div>
+      <!-- Repeat more .carousel-item blocks as needed -->
     </div>
   </div>
 </section>
