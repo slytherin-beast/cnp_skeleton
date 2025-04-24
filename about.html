@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us - Cultivator</title>
-  <link rel="stylesheet" href="styles.css">
   <style>
+    :root {
+      --cultivator-green: #0f3b2d;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -13,20 +16,20 @@
       color: #1d1d1d;
     }
     header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background-color: #ffffff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 80px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-}
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 80px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
     .header-logo img {
-  height: 50px;
-  content: url("Cultivators Logo New.png");
-}
+      height: 50px;
+      content: url("Cultivators Logo New.png");
+    }
 
     nav.header-menu {
       display: flex;
@@ -38,6 +41,7 @@
       font-weight: 600;
       font-size: 16px;
     }
+
     .cta-header a {
       padding: 10px 20px;
       background-color: #0f3b2d;
@@ -46,6 +50,35 @@
       font-size: 14px;
       text-decoration: none;
     }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #ffffff;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1001;
+      top: 100%;
+    }
+    .dropdown-content a {
+      color: #0f3b2d;
+      padding: 10px 16px;
+      display: block;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .dropdown-content a:hover {
+      background-color: #f3f3f3;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
     .banner {
       background: url('banner-image.jpg') center/cover no-repeat;
       height: 400px;
@@ -57,256 +90,128 @@
       font-size: 36px;
       font-weight: bold;
     }
-    .about-section,
-    .timeline,
-    .ceo,
-    .awards {
+    .about-section {
       padding: 60px 80px;
+      background: #f3f9f4;
+      position: relative;
+    }
+    .about-section::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: url('wave.svg') bottom center/cover no-repeat;
     }
     .about-section p {
       max-width: 700px;
       font-size: 18px;
-    }
-    .timeline-container {
       position: relative;
-      max-width: 1000px;
-      margin: auto;
-      padding: 40px 0;
+      z-index: 1;
     }
-    .timeline-container::after {
-      content: '';
-      position: absolute;
-      width: 6px;
-      background-color: #4d8e00;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      margin-left: -3px;
-    }
-    .timeline-item {
-      position: relative;
-      background: #f9f9f9;
-      width: 42%;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      border-radius: 8px;
-      animation: swingIn 0.6s ease forwards;
-    }
-    .timeline-item:nth-child(odd) {
-      left: 0;
-      transform-origin: right;
-    }
-    .timeline-item:nth-child(even) {
-      left: 58%;
-      transform-origin: left;
-    }
-    .timeline-item:not(:first-child) {
-      margin-top: 30px;
-    }
-    @keyframes swingIn {
-      0% { transform: rotate(20deg); opacity: 0; }
-      100% { transform: rotate(0); opacity: 1; }
-    }
-    .timeline-item h3 {
-      margin-top: 0;
-    }
-    .ceo {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 40px;
-    }
-    .ceo img {
-      max-height: 400px;
-      border-radius: 20px;
-      flex: 1 1 300px;
-    }
-    .ceo div {
-      flex: 1 1 300px;
-    }
-    .awards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 30px;
-      margin-top: 30px;
-    }
-    .awards-card {
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .awards-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-    .awards-card img {
-      max-width: 100px;
-      height: auto;
-      margin-bottom: 10px;
-    }
-    footer {
-      display: flex;
-      flex-wrap: wrap;
-    }
-    .footer-column {
-      flex: 1;
-      padding: 10px;
-    }
-    <style>
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background-color: #ffffff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 80px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    .header-logo {
-      font-weight: bold;
-      font-size: 20px;
-      color: var(--cultivator-green);
-    }
-    .header-nav {
-      display: flex;
-      gap: 20px;
-    }
-    .header-nav a {
-      text-decoration: none;
-      color: #1d3b18;
-      font-weight: 500;
-      font-size: 14px;
-    }
-</style>
   </style>
 </head>
 <body>
-  <!-- Header -->
- <header>
-  <div style="display: flex; align-items: center; justify-content: flex-start; gap: 60px; width: 100%;">
-    <img src="Cultivators Logo New.png" style="height: 50px;" alt="Cultivator Logo" style="height: 50px;">
-    <nav class="header-menu">
-  <div class="dropdown">
-    <a href="#">Company ▼</a>
-    <div class="dropdown-content">
-      <a href="#">Certifications & Compliance</a>
-      <a href="#">Manufacturing & Quality</a>
-      <a href="#">Sustainability</a>
-      <a href="#">Global Presence / Distribution</a>
+  <header>
+    <div style="display: flex; align-items: center; justify-content: flex-start; gap: 60px; width: 100%;">
+      <img src="Cultivators Logo New.png" style="height: 50px;" alt="Cultivator Logo">
+      <nav class="header-menu">
+        <div class="dropdown">
+          <a href="#">Company ▼</a>
+          <div class="dropdown-content">
+            <a href="#">Certifications & Compliance</a>
+            <a href="#">Manufacturing & Quality</a>
+            <a href="#">Sustainability</a>
+            <a href="#">Global Presence / Distribution</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="#">Ingredient Portfolio ▼</a>
+          <div class="dropdown-content">
+            <a href="#">Herbal Teas</a>
+            <a href="#">Hair Masks</a>
+            <a href="#">Oils</a>
+          </div>
+        </div>
+        <a href="about.html">About us</a>
+        <a href="#">Resources / Blog</a>
+        <a href="#">News & Insights</a>
+        <a href="#">Contact Us</a>
+      </nav>
     </div>
-  </div>
-  <div class="dropdown">
-    <a href="#">Ingredient Portfolio ▼</a>
-    <div class="dropdown-content">
-      <a href="#">Herbal Teas</a>
-      <a href="#">Hair Masks</a>
-      <a href="#">Oils</a>
-    </div>
-  </div>
-  <a href="about.html">About us</a>
-  <a href="#">Resources / Blog</a>
-  <a href="#">News & Insights</a>
-  <a href="#">Contact Us</a>
-      
-</nav>
-  </div>
-  <div style="display: none;"></div>
+    <div style="display: none;"></div>
     <img src="flag-uk.png" alt="English" style="height: 18px;">
     <img src="flag-in.png" alt="Hindi" style="height: 18px;">
-  </div>
-</header>
-  <!-- Hero Banner -->
+  </header>
+
   <section class="banner">
     Discover Our Roots and Purpose
   </section>
-  <!-- About Us Summary -->
+
   <section class="about-section">
     <h2>Who We Are</h2>
     <p>Cultivator is a globally recognized leader in certified organic herbal ingredients. We have spent over two decades empowering wellness brands with transparency, sustainability, and Ayurvedic heritage. Our commitment to purity and traceability defines every product we deliver.</p>
   </section>
+<section class="timeline" style="padding: 60px 80px;">
+  <h2 style="text-align:center; color: var(--cultivator-green);">Our Journey</h2>
+  <div style="position: relative; max-width: 1000px; margin: auto;">
+    <div style="content: ''; position: absolute; width: 6px; background-color: var(--cultivator-green); top: 0; bottom: 0; left: 50%; margin-left: -3px;"></div>
+    <div class="timeline-item" style="position: relative; background: #f9f9f9; width: 42%; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 8px; left: 0; transform-origin: right;">
+      <h3>2000 - Foundation</h3>
+      <p>Founded to offer authentic, organic herbs globally.</p>
+    </div>
+    <div class="timeline-item" style="position: relative; background: #f9f9f9; width: 42%; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 8px; left: 58%; transform-origin: left; margin-top: 30px;">
+      <h3>2010 - Expansion</h3>
+      <p>Reached over 20 countries with more certifications.</p>
+    </div>
+    <div class="timeline-item" style="position: relative; background: #f9f9f9; width: 42%; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 8px; left: 0; transform-origin: right; margin-top: 30px;">
+      <h3>2020 - Carbon Neutral</h3>
+      <p>Shifted to solar-powered, carbon-neutral operations.</p>
+    </div>
+    <div class="timeline-item" style="position: relative; background: #f9f9f9; width: 42%; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-radius: 8px; left: 58%; transform-origin: left; margin-top: 30px;">
+      <h3>2023 - Innovation Launch</h3>
+      <p>Launched AI advisory for farmers globally.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- Timeline Section -->
-  <section class="timeline">
-    <h2>Our Journey</h2>
-    <div class="timeline-container">
-      <div class="timeline-item">
-        <h3>2000 - Foundation</h3>
-        <p>Cultivator was founded with a mission to offer authentic, organic herbs globally.</p>
-      </div>
-      <div class="timeline-item">
-        <h3>2005 - Certification</h3>
-        <p>Achieved first USDA Organic and EU Organic certifications for Indian-grown herbs.</p>
-      </div>
-      <div class="timeline-item">
-        <h3>2010 - Expansion</h3>
-        <p>We expanded our reach to more than 20 countries with increased organic certifications.</p>
-      </div>
-      <div class="timeline-item">
-        <h3>2015 - New Facilities</h3>
-        <p>Built a state-of-the-art processing center and implemented cleanroom packaging.</p>
-      </div>
-      <div class="timeline-item">
-        <h3>2020 - Sustainability Shift</h3>
-        <p>All operations turned carbon-neutral and solar-powered, setting a benchmark in eco-conscious trade.</p>
-      </div>
-      <div class="timeline-item">
-        <h3>2022 - New Partnerships</h3>
-        <p>Collaborated with global wellness brands to develop Ayurvedic-based hair care.</p>
-      </div>
-      <div class="timeline-item">
-        <h3>2023 - Innovation Launch</h3>
-        <p>Introduced AI-powered farming advisory for rural farmers in India and overseas partners.</p>
-      </div>
-      <div class="timeline-item">
-        <h3>2024 - Sustainability Awards</h3>
-        <p>Recognized globally for our regenerative farming and social impact across supply chains.</p>
-      </div>
-      <div class="timeline-item">
-        <h3>2025 - Ayurvedic R&D</h3>
-        <p>Launched an R&D division focused on Ayurvedic clinical testing and formulation.</p>
-      </div>
-    </div>
-  </section>
+<section class="ceo" style="display: flex; flex-wrap: wrap; align-items: center; gap: 40px; padding: 60px 80px;">
+  <img src="ceo.jpg" alt="CEO" style="max-height: 400px; border-radius: 20px; flex: 1 1 300px;">
+  <div style="flex: 1 1 300px;">
+    <h2 style="color: var(--cultivator-green);">Message from Our Founder</h2>
+    <p>“At Cultivator, what began as a dream of sustainable farming is now a global movement. We are rooted in transparency, purity, and impact.”<br><strong>– John Sharma, Director</strong></p>
+  </div>
+</section>
 
-  <!-- CEO Message Section -->
-  <section class="ceo">
-    <img src="95ed621097a4f2795122c38918388b82.jpg" alt="CEO Photo">
-    <div>
-      <h2>Message from Our Founder</h2>
-      <p>“At Cultivator, our roots go deep. What began as a dream of sustainable herb farming has blossomed into a global movement. We remain grounded in our values—transparency, purity, and care.”<br><br><strong>– John Sharma, Founder & Director</strong></p>
-    </div>
-  </section>
+<section class="awards" style="padding: 60px 80px;">
+  <h2 style="text-align: center; color: var(--cultivator-green);">Awards & Recognition</h2>
+  <p style="text-align: center; max-width: 800px; margin: 0 auto 40px;">Recognized globally for our commitment to quality, transparency, and sustainability. Our certifications and awards validate our continuous efforts in ethical trade.</p>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 30px;">
+    <div class="awards-card" style="text-align: center;"><img src="cert1.png" alt="Award 1" style="max-width: 100px;"><p>Organic Leadership</p></div>
+    <div class="awards-card" style="text-align: center;"><img src="cert2.png" alt="Award 2" style="max-width: 100px;"><p>Eco Award</p></div>
+    <div class="awards-card" style="text-align: center;"><img src="cert3.png" alt="Award 3" style="max-width: 100px;"><p>Green Trade</p></div>
+    <div class="awards-card" style="text-align: center;"><img src="cert4.png" alt="Award 4" style="max-width: 100px;"><p>Fair Herb</p></div>
+    <div class="awards-card" style="text-align: center;"><img src="cert5.png" alt="Award 5" style="max-width: 100px;"><p>Herbal Excellence</p></div>
+    <div class="awards-card" style="text-align: center;"><img src="cert6.png" alt="Award 6" style="max-width: 100px;"><p>Pure Ingredients</p></div>
+    <div class="awards-card" style="text-align: center;"><img src="cert7.png" alt="Award 7" style="max-width: 100px;"><p>ISO Certified</p></div>
+    <div class="awards-card" style="text-align: center;"><img src="cert8.png" alt="Award 8" style="max-width: 100px;"><p>Global Wellness</p></div>
+  </div>
+</section>
 
-  <!-- Awards Section -->
-  <section class="awards">
-    <h2>Awards & Recognition</h2>
-    <p>We’ve received international recognition for our dedication to quality and sustainable trade practices. Our certifications reflect our promise to health, the environment, and our partners worldwide.</p>
-    <div class="awards-grid">
-      <div class="awards-card"><img src="cert1.png" alt="Award 1"><p>Organic Leadership</p></div>
-      <div class="awards-card"><img src="cert2.png" alt="Award 2"><p>Eco Award</p></div>
-      <div class="awards-card"><img src="cert3.png" alt="Award 3"><p>Green Trade Mark</p></div>
-      <div class="awards-card"><img src="cert4.png" alt="Award 4"><p>Fair Herb Label</p></div>
-      <div class="awards-card"><img src="cert5.png" alt="Award 5"><p>Herbal Excellence</p></div>
-      <div class="awards-card"><img src="cert6.png" alt="Award 6"><p>Pure Ingredients</p></div>
-      <div class="awards-card"><img src="cert7.png" alt="Award 7"><p>ISO Certified</p></div>
-      <div class="awards-card"><img src="cert8.png" alt="Award 8"><p>Global Wellness</p></div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-column">
-      <h3>About Us</h3>
-      <p>We are a trusted global supplier of organic and Ayurvedic herbal ingredients with over two decades of excellence.</p>
-    </div>
-    <div class="footer-column">
-      <h3>Products</h3>
-      <p>Hair Masks<br>Herbal Teas<br>Oils</p>
-    </div>
-    <div class="footer-column">
-      <h3>Contact</h3>
-      <p>📞 +91 1234567890<br>📧 info@cultivator.in</p>
-    </div>
-  </footer>
+<footer style="display: flex; flex-wrap: wrap; background: #0f3b2d; color: white; padding: 60px 80px;">
+  <div style="flex: 1; padding: 10px;">
+    <h3>About Us</h3>
+    <p>Global supplier of certified Ayurvedic and organic herbs. Trusted by wellness brands in 25+ countries.</p>
+  </div>
+  <div style="flex: 1; padding: 10px;">
+    <h3>Products</h3>
+    <p>Herbal Teas<br>Hair Masks<br>Oils</p>
+  </div>
+  <div style="flex: 1; padding: 10px;">
+    <h3>Contact</h3>
+    <p>📞 +91 1234567890<br>📧 info@cultivator.in</p>
+  </div>
+</footer>
 </body>
 </html>
