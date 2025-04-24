@@ -1,2 +1,266 @@
 <!DOCTYPE html>
-<!-- The full HTML content from the canvas is inserted here -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cultivator B2B Front Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #ffffff;
+      color: #1d1d1d;
+    }
+    header {
+      background-color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 80px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+    .header-logo {
+      font-weight: bold;
+      font-size: 20px;
+      color: #1d3b18;
+    }
+    .header-nav {
+      display: flex;
+      gap: 20px;
+    }
+    .header-nav a {
+      text-decoration: none;
+      color: #1d3b18;
+      font-weight: 500;
+      font-size: 14px;
+    }
+    .cta-button {
+      padding: 10px 28px;
+      background-color: #4d8e00;
+      color: white;
+      font-weight: 600;
+      border-radius: 50px;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .hero, section {
+      padding: 60px 80px;
+    }
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f3f9f4;
+    }
+    .hero-text {
+      max-width: 50%;
+    }
+    .hero-text h1 {
+      font-size: 40px;
+      color: #274e13;
+      line-height: 1.3;
+    }
+    .hero-text p {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+    .buttons {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 340px;
+    }
+    .buttons button {
+      padding: 16px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .btn-primary {
+      background-color: #4d8e00;
+      color: white;
+    }
+    .btn-secondary {
+      background-color: white;
+      border: 2px solid #4d8e00;
+      color: #4d8e00;
+    }
+    .certifications {
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 40px 80px;
+    }
+    .cert-card {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #f2f2f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cert-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .about-preview {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #ffffff;
+      padding: 60px 80px;
+    }
+    .about-text {
+      max-width: 50%;
+    }
+    .about-text h2 {
+      font-size: 32px;
+      color: #1d3b18;
+    }
+    .about-text p {
+      font-size: 16px;
+      margin: 20px 0;
+    }
+    .about-bullets li {
+      margin-bottom: 10px;
+    }
+    .about-image {
+      width: 40%;
+      height: 320px;
+      background-color: #d9d9d9;
+      border-radius: 20px;
+    }
+    .product-categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      padding: 60px 80px;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    footer {
+      background: #1d3b18;
+      color: white;
+      padding: 60px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+    }
+    footer h3 {
+      margin-bottom: 15px;
+    }
+    footer a, footer p {
+      color: white;
+      font-size: 14px;
+      text-decoration: none;
+      margin: 5px 0;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="display: flex; align-items: center; gap: 30px;">
+      <img src="logo.png" alt="Cultivator Logo" style="height: 50px;">
+      <nav class="header-nav">
+        <a href="#">Company</a>
+        <a href="#">Products</a>
+        <a href="#">Quality</a>
+        <a href="#">Events</a>
+        <a href="#">News & Insights</a>
+      </nav>
+    </div>
+    <div style="display: flex; align-items: center; gap: 15px;">
+      <a href="#" class="cta-button">Contact →</a>
+      <div style="width: 40px; height: 40px; background: #f3f3f3; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+        <span style="font-size: 18px; color: #1d3b18;">🔍</span>
+      </div>
+      <img src="flag-uk.png" alt="English" style="height: 18px;">
+      <img src="flag-tr.png" alt="Turkish" style="height: 18px;">
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>From Soil to Seal – Empowering Global Wellness Brands</h1>
+      <p>Explore our full range of organic ingredients backed by global certifications, sustainable sourcing, and traceable quality – designed for bulk buyers and wellness pioneers.</p>
+      <div class="buttons">
+        <button class="btn-primary">Explore Our Ingredient Range</button>
+        <button class="btn-secondary">Get In Touch With Our Sales Team</button>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="your-image.jpg" alt="Farmlands and Herbal Ingredients" style="max-width: 500px; border-radius: 12px;">
+    </div>
+  </section>
+
+  <section class="certifications">
+    <div class="cert-card"><img src="cert-1.png" alt="USDA"></div>
+    <div class="cert-card"><img src="cert-2.png" alt="EU"></div>
+    <div class="cert-card"><img src="cert-3.png" alt="ISO"></div>
+    <div class="cert-card"><img src="cert-4.png" alt="Halal"></div>
+    <div class="cert-card"><img src="cert-5.png" alt="Kosher"></div>
+    <div class="cert-card"><img src="cert-6.png" alt="Fair for Life"></div>
+  </section>
+
+  <section class="about-preview">
+    <div class="about-image"></div>
+    <div class="about-text">
+      <h2>Nourishing Connections, Globally</h2>
+      <p>We provide a wide range of organic products across global markets, empowering wellness brands with quality ingredients and responsible sourcing practices.</p>
+      <ul class="about-bullets">
+        <li>🌱 Highest food safety standards (certified)</li>
+        <li>🌍 Experienced traders with global reach</li>
+        <li>💼 Competitive pricing with reliable service</li>
+      </ul>
+      <div class="buttons">
+        <button class="btn-secondary">About Us →</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-preview">
+    <div class="about-text">
+      <h2>Crafted by Nature, Backed by Science</h2>
+      <p>Our portfolio includes expertly processed herbal teas, hair masks, oils, and plant-based powders tailored for the wellness, beauty, and nutraceutical industries. Each product is developed with a deep commitment to traceability, organic standards, and ingredient innovation.</p>
+      <a class="btn-secondary" href="#">Explore Our Portfolio →</a>
+    </div>
+    <div class="product-categories" style="max-width: 50%; grid-template-columns: 1fr 1fr;">
+      <div class="product-card"><h3>Herbal Teas</h3><p>Soothing, organic infusions sourced directly from certified farms.</p></div>
+      <div class="product-card"><h3>Hair Masks</h3><p>Nourishing, Ayurveda-inspired masks for deep root rejuvenation.</p></div>
+      <div class="product-card"><h3>Oils</h3><p>Cold-pressed and essential oils for cosmetic and wellness use.</p></div>
+      <div class="product-card"><h3>Herbal Powders</h3><p>Finely milled botanicals ideal for blends, capsules, or topical use.</p></div>
+    </div>
+  </section>
+
+  <section class="product-categories">
+    <div class="product-card"><h3>Sourcing</h3><p>Sourcing hundreds of products worldwide for the food industry.</p></div>
+    <div class="product-card"><h3>Trading</h3><p>Market monitoring to source the best quality ingredients at the best price.</p></div>
+    <div class="product-card"><h3>Processing</h3><p>Processing raw ingredients into ready-to-use bulk solutions.</p></div>
+    <div class="product-card"><h3>Logistics</h3><p>Fast and efficient delivery worldwide with trackable logistics support.</p></div>
+    <div class="product-card"><h3>Private Label</h3><p>Custom packaging and branding solutions for your business.</p></div>
+    <div class="product-card"><h3>Innovation</h3><p>We co-create new formulas with wellness brands for unique solutions.</p></div>
+  </section>
+
+  <footer>
+    <div><h3>About Us</h3><p>BARDACKI GROUP<br>We are an international supplier of organic and conventional ingredients. Multiple offices worldwide.</p></div>
+    <div><h3>Our Products</h3><a href="#">All Products</a><a href="#">Organic Ingredients</a><a href="#">Ready Stock</a></div>
+    <div><h3>Quality & Terms</h3><a href="#">Certificates</a><a href="#">Terms & Conditions</a><a href="#">Policies</a></div>
+    <div><h3>Contact Us</h3><p>📞 +91 1234567890<br>📧 info@cultivator.in<br>🕒 Mon–Fri: 9 AM–5 PM</p></div>
+  </footer>
+</body>
+</html>
