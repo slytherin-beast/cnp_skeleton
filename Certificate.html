@@ -110,53 +110,74 @@
   </header>
 
   <!-- CERTIFICATIONS & COMPLIANCE PAGE -->
-  <section id="certifications-compliance" class="py-16 px-8 bg-white text-gray-800">
-    <div class="max-w-screen-xl mx-auto">
-      <h2 class="text-4xl font-bold mb-10">Certifications & Compliance</h2>
+<section id="certifications-compliance" class="py-16 px-8 bg-white text-gray-800">
+  <div class="max-w-screen-xl mx-auto">
+    <h2 class="text-4xl font-bold mb-10">Certifications & Compliance</h2>
 
-      <!-- CERTIFICATES GRID -->
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16">
-        <div class="border border-gray-200 rounded-xl p-6 text-center hover:shadow-lg transition-all">
-          <img src="/images/certificates/usda-organic-logo.png" alt="USDA Organic" class="h-16 mx-auto mb-4">
-          <h3 class="text-lg font-semibold">USDA Organic</h3>
-          <p class="text-sm text-gray-600">Issued by: USDA<br>Valid till: Dec 2026</p>
-          <a href="/pdfs/USDA-Organic-Certificate.pdf" class="block mt-4 text-green-700 underline">Download PDF</a>
+    <!-- 4x4 CERTIFICATE GRID -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mb-20">
+      <!-- Example certificate tile -->
+      <div class="bg-white border border-gray-300 rounded-xl p-4 text-center hover:outline-dashed hover:outline-2 hover:outline-green-700">
+        <img src="/images/certificates/usda-organic-logo.png" alt="USDA Organic" class="h-12 mx-auto mb-3">
+        <h4 class="font-semibold text-md">USDA Organic</h4>
+        <hr class="my-2 border-gray-200">
+        <p class="text-xs text-gray-500">Issued by USDA<br>Valid till: Dec 2026</p>
+      </div>
+      <!-- Repeat 15 more with different logos and names -->
+    </div>
+
+    <!-- COMPLIANCE SECTION: TIMELINE STYLE -->
+    <div class="space-y-12 mb-20">
+      <div class="relative pl-8 border-l-4 border-green-700">
+        <div class="ml-4">
+          <h3 class="text-2xl font-bold text-green-800 mb-2">North America</h3>
+          <p class="text-sm text-gray-700">Includes certifications like USDA Organic, NOP, GMP. QAI and FDA frameworks ensure ingredient traceability. Watermark: <em>USDA leaf</em>.</p>
         </div>
       </div>
-
-      <!-- REGION-WISE ACCORDION -->
-      <div class="space-y-4">
-        <details class="border border-gray-200 rounded-lg p-4">
-          <summary class="cursor-pointer font-semibold text-lg">North America</summary>
-          <div class="mt-3 text-sm text-gray-700">
-            Our certifications in North America include USDA Organic, NOP, and GMP compliance. These ensure rigorous quality audits from independent bodies and federal regulators, such as the FDA and QAI.
-          </div>
-        </details>
-        <details class="border border-gray-200 rounded-lg p-4">
-          <summary class="cursor-pointer font-semibold text-lg">Europe</summary>
-          <div class="mt-3 text-sm text-gray-700">
-            Compliance with EU Organic standards, COSMOS certification, and EcoCert requirements. Regular inspections and audits are conducted to ensure traceability, environmental safety, and ingredient purity.
-          </div>
-        </details>
-        <details class="border border-gray-200 rounded-lg p-4">
-          <summary class="cursor-pointer font-semibold text-lg">Asia-Pacific</summary>
-          <div class="mt-3 text-sm text-gray-700">
-            Certifications include India Organic (NPOP), APEDA, and JAIVIK Bharat. Third-party audits by regulatory bodies ensure compliance with local organic farming regulations and ethical sourcing.
-          </div>
-        </details>
+      <div class="relative pl-8 border-l-4 border-green-700">
+        <div class="ml-4">
+          <h3 class="text-2xl font-bold text-green-800 mb-2">Europe</h3>
+          <p class="text-sm text-gray-700">COSMOS Organic, EU Organic, and EcoCert. These maintain soil integrity, eco-sourcing, and EU compliance for bulk/retail exports. Watermark: <em>COSMOS leaf</em>.</p>
+        </div>
       </div>
-
-      <!-- DOWNLOADABLE RESOURCES SECTION -->
-      <div class="mt-16 text-center">
-        <h3 class="text-2xl font-bold mb-4">Downloadable Resources</h3>
-        <p class="text-sm text-gray-600 mb-6">Access full certification PDFs and compliance brochures for your quality assurance needs.</p>
-        <div class="flex flex-wrap justify-center gap-4">
-          <a href="/pdfs/All-Certifications-Brochure.pdf" class="px-6 py-3 bg-green-700 text-white rounded-xl">Download All Certificates (PDF)</a>
-          <a href="/pdfs/QA-Process-Overview.pdf" class="px-6 py-3 bg-gray-800 text-white rounded-xl">Download QA Process Overview</a>
+      <div class="relative pl-8 border-l-4 border-green-700">
+        <div class="ml-4">
+          <h3 class="text-2xl font-bold text-green-800 mb-2">Asia-Pacific</h3>
+          <p class="text-sm text-gray-700">JAIVIK Bharat, India Organic (NPOP), and APEDA. Ensures ethically sourced, small-farm audits and export compliance. Watermark: <em>India organic emblem</em>.</p>
         </div>
       </div>
     </div>
-  </section>
+
+    <!-- STATIC 3D-STYLED DOWNLOADABLE RESOURCE CARDS -->
+    <div class="relative z-10">
+      <h3 class="text-3xl font-bold text-center mb-10">Downloadable Resources</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-[4px_4px_0px_#ccc] p-6 text-center border-t border-l">
+          <img src="/images/downloads/icon-certificate.png" class="h-14 mx-auto mb-4" alt="All Certificates">
+          <h4 class="text-lg font-semibold mb-1">All Certifications</h4>
+          <p class="text-sm text-gray-500 mb-2">Complete list of certifications with issuing authority details.</p>
+          <p class="text-[10px] text-gray-400 uppercase">Last updated: Mar 2025</p>
+          <a href="/pdfs/All-Certifications-Brochure.pdf" class="inline-block mt-3 px-4 py-2 bg-green-700 text-white rounded-full">Download PDF</a>
+        </div>
+        <div class="bg-white rounded-xl shadow-[4px_4px_0px_#ccc] p-6 text-center border-t border-l">
+          <img src="/images/downloads/icon-compliance.png" class="h-14 mx-auto mb-4" alt="Compliance Overview">
+          <h4 class="text-lg font-semibold mb-1">QA Compliance Process</h4>
+          <p class="text-sm text-gray-500 mb-2">Audit structure, verification methodology, and quality steps.</p>
+          <p class="text-[10px] text-gray-400 uppercase">Last updated: Feb 2025</p>
+          <a href="/pdfs/QA-Process-Overview.pdf" class="inline-block mt-3 px-4 py-2 bg-gray-800 text-white rounded-full">Download PDF</a>
+        </div>
+        <div class="bg-white rounded-xl shadow-[4px_4px_0px_#ccc] p-6 text-center border-t border-l">
+          <img src="/images/downloads/icon-standards.png" class="h-14 mx-auto mb-4" alt="Global Standards">
+          <h4 class="text-lg font-semibold mb-1">Global Audit Standards</h4>
+          <p class="text-sm text-gray-500 mb-2">Cross-region regulatory chart comparing compliance tiers.</p>
+          <p class="text-[10px] text-gray-400 uppercase">Coming Soon</p>
+          <a href="#" class="inline-block mt-3 px-4 py-2 bg-green-700 text-white rounded-full">Coming Soon</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
   <footer style="display: flex; flex-wrap: wrap; background: #0f3b2d; color: white; padding: 60px 80px;">
     <div style="flex: 1; padding: 10px;">
