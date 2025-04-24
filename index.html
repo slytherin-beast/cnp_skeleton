@@ -12,12 +12,18 @@
       color: #1d1d1d;
     }
     header {
+
       background-color: #f3f3f3;
       padding: 20px 80px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
+    
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     .header-logo img {
       height: 50px;
     }
@@ -259,16 +265,45 @@
     transform: scale(1.02);
     transition: all 0.2s ease;
   }
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 1001;
+  top: 100%;
+}
+.dropdown-content a {
+  color: #0f3b2d;
+  padding: 10px 16px;
+  display: block;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+}
+.dropdown-content a:hover {
+  background-color: #f3f3f3;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 </style>
 <style>
     header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
       background-color: #ffffff;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 80px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    }
     .header-logo {
       font-weight: bold;
       font-size: 20px;
@@ -292,11 +327,24 @@
   <div style="display: flex; align-items: center; gap: 30px;">
     <img src="Cultivators Logo New.png" alt="Cultivator Logo" style="height: 50px;">
     <nav class="header-menu">
-  <a href="#">Company ▼</a>
-  <a href="#">Products ▼</a>
-  <a href="#">Quality ▼</a>
-  <a href="#">Events ▼</a>
-  <a href="#">News & Insights ▼</a>
+  <div class="dropdown">
+    <a href="#">Company ▼</a>
+    <div class="dropdown-content">
+      <a href="#">About Us</a>
+      <a href="#">Our Story</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <a href="#">Products ▼</a>
+    <div class="dropdown-content">
+      <a href="#">Herbal Teas</a>
+      <a href="#">Hair Masks</a>
+      <a href="#">Oils</a>
+    </div>
+  </div>
+  <a href="#">Quality</a>
+  <a href="#">Events</a>
+  <a href="#">News & Insights</a>
 </nav>
   </div>
   <div style="display: flex; align-items: center; gap: 15px;">
