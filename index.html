@@ -201,7 +201,50 @@
       text-decoration: none;
       display: inline-block;
     }
-  </style>
+    /* Animations */
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+  }
+  .cert-card {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+  }
+  .cert-card:nth-child(1) { animation-delay: 0.1s; }
+  .cert-card:nth-child(2) { animation-delay: 0.2s; }
+  .cert-card:nth-child(3) { animation-delay: 0.3s; }
+  .cert-card:nth-child(4) { animation-delay: 0.4s; }
+  .cert-card:nth-child(5) { animation-delay: 0.5s; }
+  .cert-card:nth-child(6) { animation-delay: 0.6s; }
+  .cert-card:nth-child(7) { animation-delay: 0.7s; }
+  .cert-card:nth-child(8) { animation-delay: 0.8s; }
+  .cert-card:nth-child(9) { animation-delay: 0.9s; }
+  .cert-card:nth-child(10) { animation-delay: 1s; }
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .hero-text h1 {
+    animation: typeIn 1s ease-out both;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #4d8e00;
+    width: 0;
+  }
+  @keyframes typeIn {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  .btn-primary:hover, .btn-secondary:hover {
+    filter: brightness(1.1);
+    transform: scale(1.02);
+    transition: all 0.2s ease;
+  }
+</style>
 <style>
     header {
       background-color: #ffffff;
