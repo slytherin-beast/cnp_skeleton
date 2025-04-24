@@ -214,11 +214,19 @@
       display: inline-block;
     }
     /* Animations */
-  .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
+  .product-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
   .cert-card {
     opacity: 0;
     transform: translateY(20px);
@@ -323,6 +331,19 @@
       font-weight: 500;
       font-size: 14px;
     }
+.product-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 </style>
 </head>
 <body>
@@ -404,31 +425,46 @@
 </section>
 
 <!-- Product Showcase Section -->
-<section class="about-preview">
-  <div class="about-text">
-    <h2>Crafted by Nature, Backed by Science</h2>
-    <p>Our portfolio includes expertly processed herbal teas, hair masks, oils, and plant-based powders tailored for the wellness, beauty, and nutraceutical industries. Each product is developed with a deep commitment to traceability, organic standards, and ingredient innovation.</p>
-    <a class="btn-secondary" href="#">Explore Our Portfolio →</a>
+<!-- Product Showcase Section -->
+<section class="product-categories" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; padding: 60px 80px;">
+  <div class="product-card" style="animation: fadeInUp 0.3s ease forwards; animation-delay: 0.1s;">
+    <h3>Herbal Teas</h3>
+    <p>Soothing, organic infusions sourced directly from certified farms.</p>
   </div>
-  <div class="product-categories" style="max-width: 50%; grid-template-columns: 1fr 1fr;">
-    <div class="product-card">
-      <h3>Herbal Teas</h3>
-      <p>Soothing, organic infusions sourced directly from certified farms.</p>
-    </div>
-    <div class="product-card">
-      <h3>Hair Masks</h3>
-      <p>Nourishing, Ayurveda-inspired masks for deep root rejuvenation.</p>
-    </div>
-    <div class="product-card">
-      <h3>Oils</h3>
-      <p>Cold-pressed and essential oils for cosmetic and wellness use.</p>
-    </div>
-    <div class="product-card">
-      <h3>Herbal Powders</h3>
-      <p>Finely milled botanicals ideal for blends, capsules, or topical use.</p>
-    </div>
+  <div class="product-card" style="animation: fadeInUp 0.3s ease forwards; animation-delay: 0.2s;">
+    <h3>Hair Masks</h3>
+    <p>Nourishing, Ayurveda-inspired masks for deep root rejuvenation.</p>
+  </div>
+  <div class="product-card" style="animation: fadeInUp 0.3s ease forwards; animation-delay: 0.3s;">
+    <h3>Oils</h3>
+    <p>Cold-pressed and essential oils for cosmetic and wellness use.</p>
+  </div>
+  <div class="product-card" style="animation: fadeInUp 0.3s ease forwards; animation-delay: 0.4s;">
+    <h3>Herbal Powders</h3>
+    <p>Finely milled botanicals ideal for blends, capsules, or topical use.</p>
+  </div>
+  <div class="product-card" style="animation: fadeInUp 0.3s ease forwards; animation-delay: 0.5s;">
+    <h3>Extracts</h3>
+    <p>Concentrated herbal goodness for formulation-ready solutions.</p>
+  </div>
+  <div class="product-card" style="animation: fadeInUp 0.3s ease forwards; animation-delay: 0.6s;">
+    <h3>Capsules</h3>
+    <p>Encapsulated wellness ingredients tailored for holistic health.</p>
+  </div>
+  <div class="product-card" style="animation: fadeInUp 0.3s ease forwards; animation-delay: 0.7s;">
+    <h3>Teabags</h3>
+    <p>Single-serve herbal teas for convenience and consistent quality.</p>
+  </div>
+  <div class="product-card" style="animation: fadeInUp 0.3s ease forwards; animation-delay: 0.8s;">
+    <h3>Seasonal Herbs</h3>
+    <p>Farm-fresh Ayurvedic herbs curated per seasonal availability.</p>
+  </div>
+  <div class="product-card" style="animation: fadeInUp 0.3s ease forwards; animation-delay: 0.9s;">
+    <h3>Essential Oils</h3>
+    <p>Therapeutic-grade oils distilled from premium botanicals.</p>
   </div>
 </section>
+
 
 <!-- Product Categories -->
 <section class="product-categories">
