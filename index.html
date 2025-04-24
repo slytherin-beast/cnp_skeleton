@@ -16,12 +16,16 @@
       color: #1d1d1d;
     }
     header {
-      background-color: #f3f3f3;
-      padding: 20px 80px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 80px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
     .header-logo img {
       height: 50px;
     }
@@ -88,7 +92,7 @@
     .btn-secondary {
       background-color: white;
       border: 2px solid var(--cultivator-green);
-      color: #4d8e00;
+      color: var(--cultivator-green);
     }
     .certifications {
       position: relative;
@@ -120,7 +124,7 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background-color: #4d8e00;
+      background-color: var(--cultivator-green);
       color: white;
       border: none;
       padding: 10px;
@@ -486,7 +490,7 @@
     <form style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;">
       <input type="text" placeholder="Your Full Name *" style="padding: 14px; width: 300px; border: none; border-bottom: 2px solid #ccc;">
       <input type="email" placeholder="Enter your email *" style="padding: 14px; width: 300px; border: none; border-bottom: 2px solid #ccc;">
-      <button type="submit" style="padding: 14px 28px; background: #689c26; color: white; border: none; border-radius: 30px; font-size: 16px; cursor: pointer;">Subscribe →</button>
+      <button type="submit" style="padding: 14px 28px; background: var(--cultivator-green); color: white; border: none; border-radius: 30px; font-size: 16px; cursor: pointer;">Subscribe →</button>
     </form>
   </div>
 </section>
