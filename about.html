@@ -79,6 +79,33 @@
       display: block;
     }
 
+    .mvc-section {
+      padding: 60px 80px;
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      text-align: center;
+    }
+    .mvc-box {
+      flex: 1;
+      background-color: #f3f3f3;
+      border-radius: 16px;
+      padding: 30px;
+      transition: transform 0.3s ease;
+    }
+    .mvc-box:hover {
+      transform: translateY(-5px);
+    }
+    .mvc-icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+    .mvc-title {
+      color: var(--cultivator-green);
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
     .banner {
       background: url('banner-image.jpg') center/cover no-repeat;
       height: 400px;
@@ -148,7 +175,24 @@
   <section class="banner">
     Discover Our Roots and Purpose
   </section>
-
+ <!-- Mission Vision Values Section -->
+  <section class="mvc-section">
+    <div class="mvc-box">
+      <div class="mvc-icon">🎯</div>
+      <div class="mvc-title">Our Mission</div>
+      <p>To empower wellness through ethical sourcing and innovation in herbal ingredients for a healthier planet and people.</p>
+    </div>
+    <div class="mvc-box">
+      <div class="mvc-icon">👁️</div>
+      <div class="mvc-title">Our Vision</div>
+      <p>To be the most trusted name in natural wellness by cultivating harmony between nature, science, and sustainability.</p>
+    </div>
+    <div class="mvc-box">
+      <div class="mvc-icon">📈</div>
+      <div class="mvc-title">Our Values</div>
+      <p>Integrity, transparency, respect, and a relentless commitment to quality define everything we do.</p>
+    </div>
+  </section>
   <section class="about-section">
     <h2>Who We Are</h2>
     <p>Cultivator is a globally recognized leader in certified organic herbal ingredients. We have spent over two decades empowering wellness brands with transparency, sustainability, and Ayurvedic heritage. Our commitment to purity and traceability defines every product we deliver.</p>
