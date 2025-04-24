@@ -82,6 +82,13 @@
   </style>
 </head>
 <body>
+  <div id="header-placeholder"></div>
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("header-placeholder").innerHTML = data);
+  </script>
+
   <section class="video-tour">
     <h2>Experience Our Facility</h2>
     <iframe src="https://www.youtube.com/embed/sample-video" frameborder="0" allowfullscreen></iframe>
@@ -110,7 +117,6 @@
     <div class="cert-icons">
       <img src="/images/gmp-logo.png" alt="GMP">
       <img src="/images/iso22000-logo.png" alt="ISO 22000">
-      <!-- Add more logos as needed -->
     </div>
   </section>
 
@@ -138,5 +144,12 @@
       <br><br>– A Global Wellness Brand
     </div>
   </section>
+
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+  </script>
 </body>
 </html>
