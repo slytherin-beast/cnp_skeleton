@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cultivator B2B Front Page</title>
+  <title>Certifications & Compliance - Cultivator</title>
   <style>
     :root {
       --cultivator-green: #0f3b2d;
     }
-
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -16,38 +15,25 @@
       color: #1d1d1d;
     }
     header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background-color: #ffffff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 80px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-}
-    .header-logo img {
-  height: 50px;
-  content: url("Cultivators Logo New.png");
-}
-
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 80px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
     nav.header-menu {
       display: flex;
       gap: 25px;
     }
     nav.header-menu a {
       text-decoration: none;
-      color: #0f3b2d;
+      color: var(--cultivator-green);
       font-weight: 600;
       font-size: 16px;
-    }
-    .cta-header a {
-      padding: 10px 20px;
-      background-color: #0f3b2d;
-      color: #fff;
-      border-radius: 30px;
-      font-size: 14px;
-      text-decoration: none;
     }
     .dropdown {
       position: relative;
@@ -63,7 +49,7 @@
       top: 100%;
     }
     .dropdown-content a {
-      color: #0f3b2d;
+      color: var(--cultivator-green);
       padding: 10px 16px;
       display: block;
       text-decoration: none;
@@ -81,12 +67,12 @@
 <body>
   <header>
     <div style="display: flex; align-items: center; justify-content: flex-start; gap: 60px; width: 100%;">
-      <img src="Cultivators Logo New.png" style="height: 50px;" alt="Cultivator Logo">
+      <img src="Cultivators Logo New.png" alt="Cultivator Logo" style="height: 50px;">
       <nav class="header-menu">
         <div class="dropdown">
           <a href="#">Company ▼</a>
           <div class="dropdown-content">
-            <a href="Certificate.html">Certifications & Compliance</a>
+            <a href="#">Certifications & Compliance</a>
             <a href="#">Manufacturing & Quality</a>
             <a href="#">Sustainability</a>
             <a href="#">Global Presence / Distribution</a>
@@ -106,80 +92,42 @@
         <a href="#">Contact Us</a>
       </nav>
     </div>
-    <div style="display: none;"></div>
-    <img src="flag-uk.png" alt="English" style="height: 18px;">
-    <img src="flag-in.png" alt="Hindi" style="height: 18px;">
   </header>
 
-  <!-- CERTIFICATIONS & COMPLIANCE PAGE -->
-<section id="certifications-compliance" class="py-16 px-8 bg-white text-gray-800">
-  <div class="max-w-screen-xl mx-auto">
-    <h2 class="text-4xl font-bold mb-10">Certifications & Compliance</h2>
+<!-- CERTIFICATIONS & COMPLIANCE PAGE -->
+<section id="certifications-compliance" style="padding: 60px 40px; background: #ffffff; color: #1d1d1d; font-family: 'Segoe UI', sans-serif;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <h2 style="font-size: 36px; font-weight: bold; margin-bottom: 40px;">Certifications & Compliance</h2>
 
-    <!-- 4x4 CERTIFICATE GRID -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mb-20">
-      <!-- Example certificate tile -->
-      <div class="bg-white border border-gray-300 rounded-xl p-4 text-center hover:outline-dashed hover:outline-2 hover:outline-green-700">
-        <img src="/images/certificates/usda-organic-logo.png" alt="USDA Organic" class="h-12 mx-auto mb-3">
-        <h4 class="font-semibold text-md">USDA Organic</h4>
-        <hr class="my-2 border-gray-200">
-        <p class="text-xs text-gray-500">Issued by USDA<br>Valid till: Dec 2026</p>
-      </div>
-      <!-- Repeat 15 more with different logos and names -->
+    <!-- CERTIFICATE GRID -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; margin-bottom: 60px;">
+      <!-- Repeat 10 certificates -->
+      " + Array(10).fill(`<div style='border: 1px solid #ccc; border-radius: 10px; padding: 16px; text-align: center;'>
+        <img src='/images/certificate-placeholder.png' alt='Certificate Logo' style='height: 50px; margin-bottom: 10px;'>
+        <h4 style='margin: 0; font-size: 16px;'>Certificate Name</h4>
+        <p style='font-size: 12px; color: #666;'>Issued by XYZ<br>Valid till: 2026</p>
+      </div>`).join("\n") + "
     </div>
 
-    <!-- COMPLIANCE SECTION: TIMELINE STYLE -->
-    <div class="space-y-12 mb-20">
-      <div class="relative pl-8 border-l-4 border-green-700">
-        <div class="ml-4">
-          <h3 class="text-2xl font-bold text-green-800 mb-2">North America</h3>
-          <p class="text-sm text-gray-700">Includes certifications like USDA Organic, NOP, GMP. QAI and FDA frameworks ensure ingredient traceability. Watermark: <em>USDA leaf</em>.</p>
-        </div>
-      </div>
-      <div class="relative pl-8 border-l-4 border-green-700">
-        <div class="ml-4">
-          <h3 class="text-2xl font-bold text-green-800 mb-2">Europe</h3>
-          <p class="text-sm text-gray-700">COSMOS Organic, EU Organic, and EcoCert. These maintain soil integrity, eco-sourcing, and EU compliance for bulk/retail exports. Watermark: <em>COSMOS leaf</em>.</p>
-        </div>
-      </div>
-      <div class="relative pl-8 border-l-4 border-green-700">
-        <div class="ml-4">
-          <h3 class="text-2xl font-bold text-green-800 mb-2">Asia-Pacific</h3>
-          <p class="text-sm text-gray-700">JAIVIK Bharat, India Organic (NPOP), and APEDA. Ensures ethically sourced, small-farm audits and export compliance. Watermark: <em>India organic emblem</em>.</p>
-        </div>
-      </div>
+    <!-- COMPLIANCE BLOCKS -->
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 60px;">
+      " + Array(20).fill(`<div style='flex: 1 1 300px; border-left: 4px solid #0f3b2d; padding-left: 16px;'>
+        <h3 style='font-size: 20px; color: #0f3b2d; margin: 10px 0;'>Region Title</h3>
+        <p style='font-size: 14px; color: #555;'>Details about compliance process, certifications, and auditing authorities for this region.</p>
+      </div>`).join("\n") + "
     </div>
 
-    <!-- STATIC 3D-STYLED DOWNLOADABLE RESOURCE CARDS -->
-    <div class="relative z-10">
-      <h3 class="text-3xl font-bold text-center mb-10">Downloadable Resources</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white rounded-xl shadow-[4px_4px_0px_#ccc] p-6 text-center border-t border-l">
-          <img src="/images/downloads/icon-certificate.png" class="h-14 mx-auto mb-4" alt="All Certificates">
-          <h4 class="text-lg font-semibold mb-1">All Certifications</h4>
-          <p class="text-sm text-gray-500 mb-2">Complete list of certifications with issuing authority details.</p>
-          <p class="text-[10px] text-gray-400 uppercase">Last updated: Mar 2025</p>
-          <a href="/pdfs/All-Certifications-Brochure.pdf" class="inline-block mt-3 px-4 py-2 bg-green-700 text-white rounded-full">Download PDF</a>
-        </div>
-        <div class="bg-white rounded-xl shadow-[4px_4px_0px_#ccc] p-6 text-center border-t border-l">
-          <img src="/images/downloads/icon-compliance.png" class="h-14 mx-auto mb-4" alt="Compliance Overview">
-          <h4 class="text-lg font-semibold mb-1">QA Compliance Process</h4>
-          <p class="text-sm text-gray-500 mb-2">Audit structure, verification methodology, and quality steps.</p>
-          <p class="text-[10px] text-gray-400 uppercase">Last updated: Feb 2025</p>
-          <a href="/pdfs/QA-Process-Overview.pdf" class="inline-block mt-3 px-4 py-2 bg-gray-800 text-white rounded-full">Download PDF</a>
-        </div>
-        <div class="bg-white rounded-xl shadow-[4px_4px_0px_#ccc] p-6 text-center border-t border-l">
-          <img src="/images/downloads/icon-standards.png" class="h-14 mx-auto mb-4" alt="Global Standards">
-          <h4 class="text-lg font-semibold mb-1">Global Audit Standards</h4>
-          <p class="text-sm text-gray-500 mb-2">Cross-region regulatory chart comparing compliance tiers.</p>
-          <p class="text-[10px] text-gray-400 uppercase">Coming Soon</p>
-          <a href="#" class="inline-block mt-3 px-4 py-2 bg-green-700 text-white rounded-full">Coming Soon</a>
-        </div>
-      </div>
+    <!-- DOWNLOADABLE RESOURCES -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px;">
+      " + Array(10).fill(`<div style='border-top: 2px solid #0f3b2d; border-left: 2px solid #0f3b2d; border-radius: 16px; padding: 20px; box-shadow: 4px 4px 0px #ccc; text-align: center;'>
+        <img src='/images/pdf-icon.png' alt='PDF Icon' style='height: 48px; margin-bottom: 10px;'>
+        <h4 style='font-size: 16px; margin-bottom: 6px;'>PDF Title</h4>
+        <p style='font-size: 13px; color: #666;'>Description of this downloadable certificate or document.</p>
+        <a href='#' style='display: inline-block; margin-top: 10px; padding: 8px 16px; background: #0f3b2d; color: #fff; border-radius: 30px; text-decoration: none;'>Download PDF</a>
+      </div>`).join("\n") + "
     </div>
   </div>
 </section>
-
 
   <footer style="display: flex; flex-wrap: wrap; background: #0f3b2d; color: white; padding: 60px 80px;">
     <div style="flex: 1; padding: 10px;">
