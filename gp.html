@@ -1,4 +1,4 @@
-<!-- Global Presence / Distribution Page Structure -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,15 +8,62 @@
   <script src="https://unpkg.com/three-globe@2.28.0/dist/three-globe.min.js"></script>
   <script src="https://unpkg.com/d3@7"></script>
   <style>
+    :root {
+      --cultivator-green: #0f3b2d;
+    }
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background-color: #f3f8f5;
+      color: #1d1d1d;
     }
-    #globeViz {
-      width: 100vw;
-      height: 100vh;
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 80px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+    nav.header-menu {
+      display: flex;
+      gap: 25px;
+    }
+    nav.header-menu a {
+      text-decoration: none;
+      color: var(--cultivator-green);
+      font-weight: 600;
+      font-size: 16px;
+    }
+    .dropdown {
       position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #ffffff;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1001;
+      top: 100%;
+    }
+    .dropdown-content a {
+      color: var(--cultivator-green);
+      padding: 10px 16px;
+      display: block;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .dropdown-content a:hover {
+      background-color: #f3f3f3;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
     }
     .country-labels {
       position: absolute;
@@ -43,9 +90,23 @@
     .country-button:hover {
       background-color: #155c44;
     }
+    #cursor-particles {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+    }
   </style>
 </head>
 <body>
+  <canvas id="cursor-particles"></canvas>
+
+  <div id="header-placeholder"></div>
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("header-placeholder").innerHTML = data);
+  </script>
+
   <div id="globeViz"></div>
   <div class="country-labels">
     <button class="country-button" onclick="focusCountry('India')">India</button>
@@ -84,6 +145,46 @@
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('globeViz').appendChild(renderer.domElement);
     world(renderer.domElement);
+  </script>
+
+  <script>
+    const canvas = document.getElementById("cursor-particles");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    let particles = [];
+    window.addEventListener("mousemove", (e) => {
+      for (let i = 0; i < 2; i++) {
+        particles.push({
+          x: e.clientX,
+          y: e.clientY,
+          size: Math.random() * 1.5 + 0.3,
+          opacity: 0.8,
+          speedX: (Math.random() - 0.5) * 1.2,
+          speedY: (Math.random() - 0.5) * 1.2
+        });
+      }
+    });
+    function handleParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particles.length; i++) {
+        let p = particles[i];
+        p.x += p.speedX;
+        p.y += p.speedY;
+        p.opacity -= 0.015;
+        if (p.opacity <= 0) {
+          particles.splice(i, 1);
+          i--;
+          continue;
+        }
+        ctx.fillStyle = `rgba(15, 59, 45, ${p.opacity})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      requestAnimationFrame(handleParticles);
+    }
+    handleParticles();
   </script>
 </body>
 </html>
