@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Cultivator</title>
+  <style>
+    :root {
+      --cultivator-green: #0f3b2d;
+      --light-green: #ecf4f1;
+      --accent-pink: #e8d4ea;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: white;
+    }
+    #cursor-particles {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    .contact-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 100vh;
+    }
+    .form-section {
+      background: var(--light-green);
+      flex: 1;
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .form-section h1 {
+      font-size: 36px;
+      color: var(--cultivator-green);
+      margin-bottom: 20px;
+    }
+    .form-section input, .form-section textarea {
+      padding: 14px;
+      margin-bottom: 16px;
+      border: 2px solid var(--cultivator-green);
+      border-radius: 8px;
+      font-size: 16px;
+      width: 100%;
+    }
+    .form-section button {
+      padding: 14px;
+      background-color: var(--cultivator-green);
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .info-section {
+      flex: 1;
+      background: #f4f4f4;
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .info-block {
+      margin-bottom: 30px;
+    }
+    .info-block h4 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: #0f3b2d;
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+<canvas id="cursor-particles"></canvas>
+<div id="header-placeholder"></div>
+<script>
+  fetch("header.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("header-placeholder").innerHTML = data);
+</script>
+
+<div class="contact-wrapper">
+  <div class="form-section">
+    <h1>Get in touch!</h1>
+    <input type="text" placeholder="Enter your Name">
+    <input type="email" placeholder="Enter a valid email address">
+    <textarea placeholder="Enter your message" rows="5"></textarea>
+    <button type="submit">Submit</button>
+  </div>
+
+  <div class="info-section">
+    <div class="info-block">
+      <h4>ADDRESS</h4>
+      <p>21 Rock Street, Jodhpur, Rajasthan 342001</p>
+    </div>
+    <div class="info-block">
+      <h4>CALL US</h4>
+      <p>+91 1234567890<br>+91 9876543210</p>
+    </div>
+    <div class="info-block">
+      <h4>OPENING HOURS</h4>
+      <p>Monday-Friday: 10am - 6pm<br>Saturday, Sunday: Closed</p>
+    </div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3494.602417726972!2d73.01867911508457!3d26.28560858340868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39418d9a6f5b0f3f%3A0x16e98fa96cfdf646!2sJodhpur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1616583162934!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script>
+  fetch("footer.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+</script>
+
+<script>
+const canvas = document.getElementById("cursor-particles");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+let particles = [];
+window.addEventListener("mousemove", (e) => {
+  for (let i = 0; i < 2; i++) {
+    particles.push({
+      x: e.clientX,
+      y: e.clientY,
+      size: Math.random() * 1.5 + 0.3,
+      opacity: 0.8,
+      speedX: (Math.random() - 0.5) * 1.2,
+      speedY: (Math.random() - 0.5) * 1.2
+    });
+  }
+});
+function handleParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let i = 0; i < particles.length; i++) {
+    let p = particles[i];
+    p.x += p.speedX;
+    p.y += p.speedY;
+    p.opacity -= 0.015;
+    if (p.opacity <= 0) {
+      particles.splice(i, 1);
+      i--;
+      continue;
+    }
+    ctx.fillStyle = `rgba(15, 59, 45, ${p.opacity})`;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  requestAnimationFrame(handleParticles);
+}
+handleParticles();
+</script>
+</body>
+</html>
