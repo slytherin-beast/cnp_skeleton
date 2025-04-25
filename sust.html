@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sustainability - Cultivator</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5fef8;
+      color: #1d1d1d;
+      overflow-x: hidden;
+    }
+    section {
+      padding: 60px 40px;
+      position: relative;
+      z-index: 2;
+    }
+    h2 {
+      text-align: center;
+      font-size: 36px;
+      color: #0f3b2d;
+      margin-bottom: 30px;
+    }
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      text-align: center;
+    }
+    .impact-box {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+      padding: 30px;
+    }
+    .impact-box h3 {
+      margin: 10px 0;
+      color: #0f3b2d;
+    }
+    .narrative {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+    .two-col {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: space-between;
+    }
+    .two-col > div {
+      flex: 1 1 45%;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .sdg-icons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .sdg-icons img {
+      height: 80px;
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("header-placeholder").innerHTML = data);
+  </script>
+
+  <section>
+    <h2>Our Organic Ecosystem</h2>
+    <p class="narrative">
+      From seed to soil, every step in our organic farming ecosystem is rooted in sustainability. We believe in nurturing biodiversity, eliminating harmful chemicals, and building a regenerative cycle that gives back to the Earth more than it takes. Our illustrated journey showcases the interconnectedness of soil health, farmer well-being, crop diversity, and climate resilience.
+    </p>
+    <!-- You can later add SVG/art background behind this -->
+  </section>
+
+  <section>
+    <h2>Environmental Impact Metrics</h2>
+    <div class="impact-grid">
+      <div class="impact-box">
+        <h3>6.2M Litres</h3>
+        <p>Water Saved through sustainable irrigation</p>
+      </div>
+      <div class="impact-box">
+        <h3>1,200 Tons</h3>
+        <p>CO₂ Emissions Offset via soil regeneration</p>
+      </div>
+      <div class="impact-box">
+        <h3>98%</h3>
+        <p>Waste Recycled or repurposed</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Farmer Empowerment</h2>
+    <div class="two-col">
+      <div>
+        <h3>Training & Capacity Building</h3>
+        <p>
+          We conduct 150+ training sessions annually on organic farming best practices, composting, soil testing, and pest management using traditional and modern techniques.
+        </p>
+      </div>
+      <div>
+        <h3>Fair Trade Impact</h3>
+        <p>
+          More than 3,000 farmers are covered under our fair trade umbrella, benefiting from minimum price assurance, premium payouts, and social development funds.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Packaging Sustainability</h2>
+    <div class="two-col">
+      <div>
+        <h3>Biodegradable Solutions</h3>
+        <p>
+          Over 80% of our packaging is now made from biodegradable films or paper-based solutions that naturally break down without harming the environment.
+        </p>
+      </div>
+      <div>
+        <h3>Recyclable & Reusable</h3>
+        <p>
+          We utilize recyclable bottles, cartons, and eco inks for every batch — drastically reducing long-term landfill waste.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>UN SDGs & CSR Commitments</h2>
+    <p class="narrative">
+      Our sustainability model aligns with the United Nations Sustainable Development Goals (SDGs), including Climate Action, Life on Land, Clean Water, and Responsible Consumption. Our CSR efforts focus on education, water conservation, and rural upliftment.
+    </p>
+    <div class="sdg-icons">
+      <img src="/images/sdg-6.png" alt="Clean Water">
+      <img src="/images/sdg-12.png" alt="Responsible Consumption">
+      <img src="/images/sdg-13.png" alt="Climate Action">
+      <img src="/images/sdg-15.png" alt="Life on Land">
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+  </script>
+</body>
+</html>
