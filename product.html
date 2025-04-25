@@ -79,7 +79,7 @@
       height: 300px;
       transform-style: preserve-3d;
       transform: rotateY(0deg);
-      transition: transform 1s ease;
+      transition: transform 1.5s ease-in-out;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -97,7 +97,7 @@
       font-weight: bold;
       font-size: 20px;
       background-color: white;
-      transition: transform 0.6s ease, z-index 0.6s;
+      transition: transform 1.2s ease-in-out, z-index 0.6s;
       transform-style: preserve-3d;
       color: #0f3b2d;
       cursor: pointer;
@@ -194,7 +194,7 @@
     <button class="arrow right" onclick="rotateDeck(1)">&#8594;</button>
   </section>
 
-  <section class="product-details">
+  <section class="product-details" id="details-section">
     <div class="details-card" id="selected-card">Product 1</div>
     <div class="details-info">
       <h3 id="detail-title">Featured Product: Product 1</h3>
@@ -214,6 +214,7 @@
     const selectedCard = document.getElementById('selected-card');
     const detailTitle = document.getElementById('detail-title');
     const detailDesc = document.getElementById('detail-desc');
+    const detailSection = document.getElementById('details-section');
     const totalCards = 25;
     const radius = 800;
     const colors = ['#fde9e9', '#fff2cc', '#e2f0d9', '#d9e2f3', '#f4cccc', '#d0e0e3', '#fce5cd'];
@@ -235,6 +236,7 @@
           selectedCard.style.backgroundColor = colors[i % colors.length];
           detailTitle.innerText = `Featured Product: Product ${i + 1}`;
           detailDesc.innerText = descriptions[i];
+          detailSection.scrollIntoView({ behavior: 'smooth' });
         });
         deck.appendChild(card);
       }
