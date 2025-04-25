@@ -38,125 +38,59 @@
       font-size: 18px;
       color: #444;
     }
-    .filter-tags {
-      text-align: center;
-      margin: 30px auto 0;
-    }
-    .filter-tags button {
-      background: white;
-      border: 2px solid var(--cultivator-green);
-      color: var(--cultivator-green);
-      font-weight: 600;
-      padding: 8px 18px;
-      margin: 0 8px;
-      border-radius: 24px;
-      cursor: pointer;
-    }
-    .filter-tags button:hover {
-      background: var(--cultivator-green);
-      color: white;
-    }
-    .deck-stack {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 60px;
-      padding: 60px;
-    }
-    .stack-column {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .blog-card-stack {
-      width: 280px;
-      height: 200px;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: transform 0.4s ease, opacity 0.4s ease;
-      cursor: pointer;
-    }
-    .blog-card-stack img {
-      width: 100%;
-      height: 100px;
-      object-fit: cover;
-    }
-    .blog-card-stack h3 {
-      font-size: 16px;
-      margin: 10px;
-      color: #0f3b2d;
-    }
-    .selected-blog {
-      width: 500px;
-      height: 400px;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
-      overflow: hidden;
-      padding: 20px;
-      display: none;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .selected-blog.active {
-      display: flex;
-    }
-    .selected-blog img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 12px;
-    }
-    .selected-blog h3 {
-      font-size: 22px;
-      color: #0f3b2d;
-    }
-    .selected-blog p {
-      font-size: 16px;
-      color: #555;
-    }
-    .downloads {
-      max-width: 1100px;
-      margin: 60px auto;
-      padding: 0 40px;
-    }
-    .downloads h2 {
-      color: var(--cultivator-green);
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    .downloads-grid {
+    .category-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
+      padding: 40px;
+      max-width: 1000px;
+      margin: auto;
     }
-    .download-item {
-      background: white;
-      padding: 20px;
+    .category-card {
+      perspective: 1000px;
+    }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+    .category-card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
       border-radius: 12px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .download-item:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 20px rgba(0,0,0,0.15);
-    }
-    .download-item h4 {
-      margin: 10px 0;
-      color: #0f3b2d;
-    }
-    .download-item a {
-      text-decoration: none;
-      color: white;
-      background: #0f3b2d;
-      padding: 10px 20px;
-      display: inline-block;
-      border-radius: 20px;
-      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
       font-weight: 600;
+      color: white;
+    }
+    .card-front {
+      background: var(--cultivator-green);
+    }
+    .card-back {
+      background: white;
+      color: #0f3b2d;
+      transform: rotateY(180deg);
+      flex-direction: column;
+      padding: 20px;
+      gap: 12px;
+      overflow-y: auto;
+    }
+    .card-back div {
+      background: #f3f8f5;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      width: 100%;
     }
   </style>
 </head>
@@ -171,70 +105,66 @@
 
 <div class="blog-hero">
   <h1>Resources & Blog</h1>
-  <p>Explore curated insights across Ayurvedic science, industry trends, global compliance, and practical usage guides. Stay informed and empowered with our latest articles and publications.</p>
+  <p>Explore curated insights across Ayurvedic science, industry trends, global compliance, and practical usage guides. Click a category card to view related blog articles.</p>
 </div>
 
-<div class="filter-tags">
-  <button>All</button>
-  <button>Ingredient Science</button>
-  <button>Usage Guides</button>
-  <button>Industry News</button>
-  <button>Regulatory Updates</button>
-</div>
-
-<section class="deck-stack">
-  <div class="stack-column" id="blog-stack">
-    <div class="blog-card-stack" onclick="selectBlog(this)">
-      <img src="/images/blog1.jpg" alt="Blog 1">
-      <h3>5 Ayurvedic Herbs You Should Know</h3>
+<section class="category-grid">
+  <div class="category-card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-front">Ingredient Science</div>
+      <div class="card-back">
+        <div>5 Ayurvedic Herbs You Should Know</div>
+        <div>Power of Turmeric in Modern Wellness</div>
+      </div>
     </div>
   </div>
-  <div class="selected-blog" id="blog-detail">
-    <img src="" alt="">
-    <h3></h3>
-    <p></p>
+  <div class="category-card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-front">Usage Guides</div>
+      <div class="card-back">
+        <div>How to Brew Herbal Teas Properly</div>
+        <div>Using Oils for Hair Strength</div>
+      </div>
+    </div>
+  </div>
+  <div class="category-card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-front">Industry News</div>
+      <div class="card-back">
+        <div>Ayurveda Industry Growth in 2025</div>
+        <div>Global Trends in Herbal Beauty</div>
+      </div>
+    </div>
+  </div>
+  <div class="category-card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-front">Regulatory Updates</div>
+      <div class="card-back">
+        <div>New EU Organic Label Rules</div>
+        <div>India’s FSSAI on Herbal Claims</div>
+      </div>
+    </div>
+  </div>
+  <div class="category-card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-front">Sustainability</div>
+      <div class="card-back">
+        <div>Reducing Water Waste in Farming</div>
+        <div>Zero-Waste Packaging Projects</div>
+      </div>
+    </div>
+  </div>
+  <div class="category-card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-front">Fair Trade & Community</div>
+      <div class="card-back">
+        <div>Empowering Women Farmers</div>
+        <div>Farmer Education Stories</div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="downloads">
-  <h2>Downloadable Resources</h2>
-  <div class="downloads-grid">
-    <div class="download-item">
-      <h4>Organic Farming eBook</h4>
-      <a href="#">Download PDF</a>
-    </div>
-    <div class="download-item">
-      <h4>Ingredient Safety White Paper</h4>
-      <a href="#">Download PDF</a>
-    </div>
-    <div class="download-item">
-      <h4>Hair Mask Brochure</h4>
-      <a href="#">Download PDF</a>
-    </div>
-    <div class="download-item">
-      <h4>Tea Portfolio Catalog</h4>
-      <a href="#">Download PDF</a>
-    </div>
-  </div>
-</section>
-
-<div id="footer-placeholder"></div>
-<script>
-  fetch("footer.html")
-    .then(res => res.text())
-    .then(data => document.getElementById("footer-placeholder").innerHTML = data);
-
-  function selectBlog(card) {
-    const img = card.querySelector('img').src;
-    const title = card.querySelector('h3').innerText;
-    const detail = document.getElementById("blog-detail");
-    detail.querySelector('img').src = img;
-    detail.querySelector('h3').innerText = title;
-    detail.querySelector('p').innerText = "Read the full article for in-depth information on this Ayurvedic topic.";
-    detail.classList.add("active");
-    detail.scrollIntoView({ behavior: 'smooth' });
-  }
-</script>
 <script>
   const canvas = document.getElementById("cursor-particles");
   const ctx = canvas.getContext("2d");
@@ -273,6 +203,12 @@
     requestAnimationFrame(handleParticles);
   }
   handleParticles();
+</script>
+<div id="footer-placeholder"></div>
+<script>
+  fetch("footer.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("footer-placeholder").innerHTML = data);
 </script>
 </body>
 </html>
