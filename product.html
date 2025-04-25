@@ -25,46 +25,49 @@
     .circular-deck {
       position: relative;
       width: 100vw;
-      height: 600px;
+      height: 800px;
       display: flex;
       align-items: center;
       justify-content: center;
       perspective: 1200px;
       transform-style: preserve-3d;
+      z-index: 1;
     }
     .circular-inner {
       position: relative;
-      width: 600px;
+      width: 800px;
       height: 400px;
       transform-style: preserve-3d;
       transform: rotateY(0deg);
       transition: transform 1s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .product-card {
       position: absolute;
-      width: 160px;
-      height: 220px;
-      background: white;
+      width: 180px;
+      height: 250px;
       border-radius: 16px;
+      border: 2px solid black;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
       display: flex;
       align-items: center;
       justify-content: center;
       transition: transform 0.5s ease, z-index 0.5s;
       transform-style: preserve-3d;
-    }
-    .product-card img {
-      width: 80%;
-      height: auto;
-      pointer-events: none;
+      color: #0f3b2d;
+      font-weight: bold;
+      font-size: 20px;
+      background-color: white;
     }
     .product-card.front {
-      transform: translateZ(150px) scale(1.1);
+      transform: translateZ(300px) scale(1.2);
       z-index: 10;
     }
     .product-info {
       text-align: center;
-      margin-top: -20px;
+      margin-top: -40px;
     }
     .product-info h2 {
       color: #0f3b2d;
@@ -105,15 +108,13 @@
 
   <section class="circular-deck">
     <button class="arrow left" onclick="rotateDeck(-1)">&#8592;</button>
-    <div class="circular-inner" id="deck">
-      <!-- Cards dynamically injected -->
-    </div>
+    <div class="circular-inner" id="deck"></div>
     <button class="arrow right" onclick="rotateDeck(1)">&#8594;</button>
   </section>
 
   <section class="product-info">
-    <h2>Featured Product: Herbal Hair Oil</h2>
-    <p>Our signature Ayurvedic blend crafted with organic herbs, deeply nourishing and 100% certified.</p>
+    <h2 id="featured-title">Featured Product: Product 1</h2>
+    <p id="featured-desc">This is a placeholder description for Product 1.</p>
   </section>
 
   <div id="footer-placeholder"></div>
@@ -125,9 +126,14 @@
 
   <script>
     const deck = document.getElementById('deck');
+    const featuredTitle = document.getElementById('featured-title');
+    const featuredDesc = document.getElementById('featured-desc');
     const totalCards = 25;
-    const radius = 260;
+    const radius = 420;
+    const colors = ['#ffadad', '#ffd6a5', '#fdffb6', '#caffbf', '#9bf6ff', '#a0c4ff', '#bdb2ff'];
     let angleOffset = 0;
+
+    const descriptions = Array.from({ length: totalCards }, (_, i) => `This is a placeholder description for Product ${i + 1}.`);
 
     function renderDeck() {
       deck.innerHTML = '';
@@ -135,9 +141,15 @@
         const angle = (2 * Math.PI / totalCards) * i + angleOffset;
         const card = document.createElement('div');
         card.className = 'product-card';
-        if (i === 0) card.classList.add('front');
+        const rotation = ((2 * Math.PI / totalCards) * i + angleOffset) % (2 * Math.PI);
+        if (Math.abs(rotation) < 0.15 || Math.abs(rotation - 2 * Math.PI) < 0.15) {
+          card.classList.add('front');
+          featuredTitle.innerText = `Featured Product: Product ${i + 1}`;
+          featuredDesc.innerText = descriptions[i];
+        }
+        card.style.backgroundColor = colors[i % colors.length];
         card.style.transform = `rotateY(${angle}rad) translateZ(${radius}px)`;
-        card.innerHTML = `<img src="/images/product${(i % 6) + 1}.png" alt="Product ${i + 1}">`;
+        card.innerHTML = `Product ${i + 1}`;
         deck.appendChild(card);
       }
     }
