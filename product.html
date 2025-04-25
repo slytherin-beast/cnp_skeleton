@@ -65,7 +65,7 @@
     .circular-deck {
       position: relative;
       width: 100vw;
-      height: 320px;
+      height: 260px;
       display: flex;
       align-items: flex-start;
       justify-content: flex-start;
@@ -80,12 +80,12 @@
       height: 200px;
       transform-style: preserve-3d;
       transform: rotateY(0deg);
-      transition: transform 1s ease-in-out;
+      transition: transform 0.7s ease;
     }
     .product-card {
       position: absolute;
-      width: 100px;
-      height: 140px;
+      width: 85px;
+      height: 130px;
       border-radius: 12px;
       border: 2px solid #000000;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -95,7 +95,7 @@
       font-weight: bold;
       font-size: 16px;
       background-color: white;
-      transition: transform 1s ease-in-out, z-index 0.5s;
+      transition: transform 0.7s ease, z-index 0.5s;
       transform-style: preserve-3d;
       color: #0f3b2d;
       cursor: pointer;
@@ -107,7 +107,7 @@
     .product-details {
       display: flex;
       align-items: flex-start;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 40px;
       padding: 60px 60px 100px;
       max-width: 1200px;
