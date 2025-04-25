@@ -1,3 +1,5 @@
+/* Entire updated HTML with refined card size, reduced gap, and centered display */
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,7 +67,7 @@
     .circular-deck {
       position: relative;
       width: 100vw;
-      height: 420px;
+      height: 280px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -76,7 +78,7 @@
     .circular-inner {
       position: relative;
       width: 700px;
-      height: 300px;
+      height: 200px;
       transform-style: preserve-3d;
       transform: rotateY(0deg);
       transition: transform 1s ease;
@@ -86,16 +88,16 @@
     }
     .product-card {
       position: absolute;
-      width: 66px;
-      height: 99px;
-      border-radius: 12px;
-      border: 2px solid #000000;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      width: 60px;
+      height: 90px;
+      border-radius: 10px;
+      border: 2px solid #000;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: bold;
-      font-size: 14px;
+      font-size: 13px;
       background-color: white;
       transition: transform 0.6s ease, z-index 0.6s;
       transform-style: preserve-3d;
@@ -103,13 +105,13 @@
       cursor: pointer;
     }
     .product-card.front {
-      transform: translateZ(200px) translateY(60px) scale(1.1);
+      transform: translateZ(200px) translateY(40px) scale(1.1);
       z-index: 10;
     }
     .product-info {
       text-align: center;
       padding: 20px;
-      margin-top: 30px;
+      margin-top: 10px;
     }
     .product-info h2 {
       margin: 0;
@@ -170,7 +172,7 @@
       card.className = 'product-card';
       card.style.backgroundColor = `hsl(${i * 360 / products.length}, 100%, 95%)`;
       card.textContent = product.name;
-      card.style.transform = `rotateY(${i * angle}deg) translateZ(260px)`;
+      card.style.transform = `rotateY(${i * angle}deg) translateZ(200px)`;
       card.dataset.index = i;
       deck.appendChild(card);
     });
