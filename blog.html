@@ -22,7 +22,7 @@
     }
     .blog-hero {
       text-align: center;
-      padding: 60px 20px 40px;
+      padding: 60px 20px 20px;
     }
     .blog-hero h1 {
       font-size: 48px;
@@ -37,6 +37,21 @@
       margin: auto;
       font-size: 18px;
       color: #444;
+    }
+    .flip-button {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .flip-button button {
+      background: var(--cultivator-green);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
     }
     .category-grid {
       display: grid;
@@ -57,7 +72,7 @@
       transform-style: preserve-3d;
       cursor: pointer;
     }
-    .category-card.flipped .card-inner {
+    .card-inner.flip-all {
       transform: rotateY(180deg);
     }
     .card-front, .card-back {
@@ -105,12 +120,15 @@
 
 <div class="blog-hero">
   <h1>Resources & Blog</h1>
-  <p>Explore curated insights across Ayurvedic science, industry trends, global compliance, and practical usage guides. Click a category card to view related blog articles.</p>
+  <p>Click on a category below to reveal related blogs. Click "Back to Categories" to reset.</p>
+</div>
+<div class="flip-button">
+  <button onclick="resetFlip()">Back to Categories</button>
 </div>
 
 <section class="category-grid">
-  <div class="category-card" onclick="this.classList.toggle('flipped')">
-    <div class="card-inner">
+  <div class="category-card">
+    <div class="card-inner" data-category="Ingredient Science">
       <div class="card-front">Ingredient Science</div>
       <div class="card-back">
         <div>5 Ayurvedic Herbs You Should Know</div>
@@ -118,8 +136,8 @@
       </div>
     </div>
   </div>
-  <div class="category-card" onclick="this.classList.toggle('flipped')">
-    <div class="card-inner">
+  <div class="category-card">
+    <div class="card-inner" data-category="Usage Guides">
       <div class="card-front">Usage Guides</div>
       <div class="card-back">
         <div>How to Brew Herbal Teas Properly</div>
@@ -127,8 +145,8 @@
       </div>
     </div>
   </div>
-  <div class="category-card" onclick="this.classList.toggle('flipped')">
-    <div class="card-inner">
+  <div class="category-card">
+    <div class="card-inner" data-category="Industry News">
       <div class="card-front">Industry News</div>
       <div class="card-back">
         <div>Ayurveda Industry Growth in 2025</div>
@@ -136,8 +154,8 @@
       </div>
     </div>
   </div>
-  <div class="category-card" onclick="this.classList.toggle('flipped')">
-    <div class="card-inner">
+  <div class="category-card">
+    <div class="card-inner" data-category="Regulatory Updates">
       <div class="card-front">Regulatory Updates</div>
       <div class="card-back">
         <div>New EU Organic Label Rules</div>
@@ -145,8 +163,8 @@
       </div>
     </div>
   </div>
-  <div class="category-card" onclick="this.classList.toggle('flipped')">
-    <div class="card-inner">
+  <div class="category-card">
+    <div class="card-inner" data-category="Sustainability">
       <div class="card-front">Sustainability</div>
       <div class="card-back">
         <div>Reducing Water Waste in Farming</div>
@@ -154,8 +172,8 @@
       </div>
     </div>
   </div>
-  <div class="category-card" onclick="this.classList.toggle('flipped')">
-    <div class="card-inner">
+  <div class="category-card">
+    <div class="card-inner" data-category="Fair Trade & Community">
       <div class="card-front">Fair Trade & Community</div>
       <div class="card-back">
         <div>Empowering Women Farmers</div>
@@ -203,6 +221,24 @@
     requestAnimationFrame(handleParticles);
   }
   handleParticles();
+
+  const cards = document.querySelectorAll('.card-inner');
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const selectedCategory = card.dataset.category;
+      cards.forEach(c => {
+        if (c.dataset.category === selectedCategory) {
+          c.classList.add('flip-all');
+        } else {
+          c.classList.remove('flip-all');
+        }
+      });
+    });
+  });
+
+  function resetFlip() {
+    cards.forEach(c => c.classList.remove('flip-all'));
+  }
 </script>
 <div id="footer-placeholder"></div>
 <script>
