@@ -126,8 +126,13 @@
       background: white;
       padding: 20px;
       border-radius: 12px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
       text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .download-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.15);
     }
     .download-item h4 {
       margin: 10px 0;
@@ -137,10 +142,11 @@
       text-decoration: none;
       color: white;
       background: #0f3b2d;
-      padding: 8px 16px;
+      padding: 10px 20px;
       display: inline-block;
       border-radius: 20px;
       font-size: 14px;
+      font-weight: 600;
     }
   </style>
 </head>
@@ -167,7 +173,38 @@
   </div>
 
   <section class="blog-grid">
-    <!-- blog-card entries remain unchanged -->
+    <div class="blog-card">
+      <img src="/images/blog1.jpg" alt="Blog 1">
+      <div class="blog-card-content">
+        <h3>5 Ayurvedic Herbs You Should Know</h3>
+        <p>Discover the top five herbs in Ayurveda, their uses, and health benefits.</p>
+        <a href="#">Read More</a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <img src="/images/blog2.jpg" alt="Blog 2">
+      <div class="blog-card-content">
+        <h3>Understanding Ingredient Traceability</h3>
+        <p>Why traceability is crucial in organic supply chains and how we do it.</p>
+        <a href="#">Read More</a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <img src="/images/blog3.jpg" alt="Blog 3">
+      <div class="blog-card-content">
+        <h3>EU Compliance Checklist 2024</h3>
+        <p>A quick guide to ensure your products meet EU regulatory requirements.</p>
+        <a href="#">Read More</a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <img src="/images/blog4.jpg" alt="Blog 4">
+      <div class="blog-card-content">
+        <h3>Usage Guide: Herbal Hair Masks</h3>
+        <p>How to effectively use herbal hair masks for stronger, shinier hair.</p>
+        <a href="#">Read More</a>
+      </div>
+    </div>
   </section>
 
   <section class="downloads">
