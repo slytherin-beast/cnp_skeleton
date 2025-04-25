@@ -1,0 +1,89 @@
+<!-- Global Presence / Distribution Page Structure -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Presence & Distribution - Cultivator</title>
+  <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+  <script src="https://unpkg.com/three-globe@2.28.0/dist/three-globe.min.js"></script>
+  <script src="https://unpkg.com/d3@7"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f3f8f5;
+    }
+    #globeViz {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+    .country-labels {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 100;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      width: 90vw;
+    }
+    .country-button {
+      padding: 10px 18px;
+      background-color: #0f3b2d;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+    .country-button:hover {
+      background-color: #155c44;
+    }
+  </style>
+</head>
+<body>
+  <div id="globeViz"></div>
+  <div class="country-labels">
+    <button class="country-button" onclick="focusCountry('India')">India</button>
+    <button class="country-button" onclick="focusCountry('Germany')">Germany</button>
+    <button class="country-button" onclick="focusCountry('USA')">USA</button>
+    <button class="country-button" onclick="focusCountry('Australia')">Australia</button>
+    <button class="country-button" onclick="focusCountry('Japan')">Japan</button>
+    <button class="country-button" onclick="focusCountry('South Africa')">South Africa</button>
+  </div>
+
+  <script>
+    const world = Globe()
+      .globeImageUrl('//unpkg.com/three-globe/example/img/earth-dark.jpg')
+      .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png')
+      .backgroundColor('#f3f8f5')
+      .pointOfView({ lat: 20, lng: 0, altitude: 2 })
+      .showAtmosphere(true)
+      .atmosphereColor("#3aafa9")
+      .atmosphereAltitude(0.2);
+
+    const countryCoords = {
+      India: [20.5937, 78.9629],
+      Germany: [51.1657, 10.4515],
+      USA: [37.0902, -95.7129],
+      Australia: [-25.2744, 133.7751],
+      Japan: [36.2048, 138.2529],
+      "South Africa": [-30.5595, 22.9375]
+    };
+
+    function focusCountry(name) {
+      const [lat, lng] = countryCoords[name];
+      world.pointOfView({ lat, lng, altitude: 1 }, 2000);
+    }
+
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('globeViz').appendChild(renderer.domElement);
+    world(renderer.domElement);
+  </script>
+</body>
+</html>
