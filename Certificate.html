@@ -94,12 +94,15 @@
   </style>
 </head>
 <body>
-    <div id="header-placeholder"></div>
+   <canvas id="cursor-particles"></canvas>
+<div id="header-placeholder"></div>
 <script>
   fetch("header.html")
     .then(res => res.text())
     .then(data => document.getElementById("header-placeholder").innerHTML = data);
 </script>
+<script src="cursorParticles.js"></script>
+
 
 <section style="padding: 60px 40px 0 40px; background: #ffffff; color: #1d1d1d; font-family: 'Segoe UI', sans-serif;">
   <div style="max-width: 900px; margin: 0 auto 60px auto; text-align: center;">
