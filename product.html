@@ -35,7 +35,7 @@
     }
     .circular-inner {
       position: relative;
-      width: 800px;
+      width: 1400px;
       height: 400px;
       transform-style: preserve-3d;
       transform: rotateY(0deg);
@@ -47,22 +47,22 @@
     .product-card {
       position: absolute;
       width: 180px;
-      height: 250px;
-      border-radius: 16px;
-      border: 2px solid black;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      height: 260px;
+      border-radius: 12px;
+      border: 2px solid #000000;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.5s ease, z-index 0.5s;
-      transform-style: preserve-3d;
-      color: #0f3b2d;
       font-weight: bold;
       font-size: 20px;
       background-color: white;
+      transition: transform 0.6s ease, z-index 0.6s;
+      transform-style: preserve-3d;
+      color: #0f3b2d;
     }
     .product-card.front {
-      transform: translateZ(300px) scale(1.2);
+      transform: translateZ(400px) scale(1.2);
       z-index: 10;
     }
     .product-info {
@@ -129,8 +129,8 @@
     const featuredTitle = document.getElementById('featured-title');
     const featuredDesc = document.getElementById('featured-desc');
     const totalCards = 25;
-    const radius = 420;
-    const colors = ['#ffadad', '#ffd6a5', '#fdffb6', '#caffbf', '#9bf6ff', '#a0c4ff', '#bdb2ff'];
+    const radius = 650;
+    const colors = ['#fddde6', '#ffe6cc', '#ffffcc', '#e0f7d9', '#ccf5ff', '#e6e6ff', '#f3e6ff'];
     let angleOffset = 0;
 
     const descriptions = Array.from({ length: totalCards }, (_, i) => `This is a placeholder description for Product ${i + 1}.`);
