@@ -1,3 +1,5 @@
+/* Entire updated HTML with reduced circular deck size */
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,7 +67,7 @@
     .circular-deck {
       position: relative;
       width: 100vw;
-      height: 850px;
+      height: 600px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -75,8 +77,8 @@
     }
     .circular-inner {
       position: relative;
-      width: 1800px;
-      height: 500px;
+      width: 1000px;
+      height: 400px;
       transform-style: preserve-3d;
       transform: rotateY(0deg);
       transition: transform 1s ease;
@@ -86,8 +88,8 @@
     }
     .product-card {
       position: absolute;
-      width: 200px;
-      height: 280px;
+      width: 180px;
+      height: 240px;
       border-radius: 12px;
       border: 2px solid #000000;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -95,51 +97,22 @@
       align-items: center;
       justify-content: center;
       font-weight: bold;
-      font-size: 20px;
+      font-size: 18px;
       background-color: white;
       transition: transform 0.6s ease, z-index 0.6s;
       transform-style: preserve-3d;
       color: #0f3b2d;
-      filter: blur(2px);
+      cursor: pointer;
     }
     .product-card.front {
-      transform: translateZ(500px) scale(1.2);
+      transform: translateZ(500px) translateY(100px) scale(1.2);
       z-index: 10;
-      filter: none;
     }
-    .product-info {
-      text-align: center;
-      margin-top: -40px;
-    }
-    .product-info h2 {
-      color: #0f3b2d;
-      font-size: 24px;
-    }
-    .product-info p {
-      color: #444;
-      font-size: 15px;
-      max-width: 600px;
-      margin: 12px auto 0;
-    }
-    .arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: #0f3b2d;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      font-size: 24px;
-      cursor: pointer;
-      z-index: 5;
-    }
-    .arrow.left { left: 10%; }
-    .arrow.right { right: 10%; }
   </style>
 </head>
 <body>
+<!-- rest of the page unchanged -->
+
   <canvas id="cursor-particles"></canvas>
   <div id="header-placeholder"></div>
   <script>
