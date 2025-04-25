@@ -73,23 +73,64 @@
       opacity: 1;
     }
     form {
-      max-width: 500px;
+      max-width: 600px;
       margin: 40px auto;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.08);
+      padding: 30px;
     }
     input, textarea, button {
       font-size: 16px;
-      padding: 10px 14px;
-      border-radius: 6px;
+      padding: 12px 16px;
+      border-radius: 8px;
       border: 1px solid #ccc;
+      width: 100%;
     }
     button {
       background-color: #0f3b2d;
       color: white;
       cursor: pointer;
       border: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #155c44;
+    }
+    .story {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1000px;
+      margin: 40px auto;
+      flex-wrap: wrap;
+    }
+    .story img {
+      width: 45%;
+      border-radius: 12px;
+    }
+    .story-content {
+      width: 45%;
+    }
+    .story:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    .silhouettes {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    .silhouettes img {
+      height: 120px;
+      opacity: 0.7;
+      transition: transform 0.3s;
+    }
+    .silhouettes img:hover {
+      transform: scale(1.1);
+      opacity: 1;
     }
     #cursor-particles {
       position: fixed;
@@ -120,11 +161,45 @@
   <section class="section">
     <h2>Distributor Locations</h2>
     <p style="text-align: center; max-width: 800px; margin: auto;">We currently export to over 30+ countries worldwide. Below are some of our key regions with certified distributors.</p>
+    <div class="silhouettes">
+      <img src="your-image/india-map.png" alt="India">
+      <img src="your-image/germany-map.png" alt="Germany">
+      <img src="your-image/usa-map.png" alt="USA">
+      <img src="your-image/australia-map.png" alt="Australia">
+      <img src="your-image/japan-map.png" alt="Japan">
+    </div>
   </section>
 
   <section class="section">
     <h2>Success Stories</h2>
-    <p style="text-align: center; max-width: 800px; margin: auto;">Our partnerships with local distributors have enabled Ayurveda-based wellness to reach more people globally. From Germany to Japan, explore how we empower wellness brands around the world.</p>
+    <div class="story">
+      <img src="your-image/story1.jpg" alt="Story 1">
+      <div class="story-content">
+        <h3>Germany Wellness Integration</h3>
+        <p>Our distributor in Germany brought Ayurveda to urban health clinics, supporting thousands of patients with our herbal teas.</p>
+      </div>
+    </div>
+    <div class="story">
+      <img src="your-image/story2.jpg" alt="Story 2">
+      <div class="story-content">
+        <h3>Australian Health Retail</h3>
+        <p>In partnership with local chains, Cultivator’s products are now on shelves in over 200 Australian stores with great customer feedback.</p>
+      </div>
+    </div>
+    <div class="story">
+      <img src="your-image/story3.jpg" alt="Story 3">
+      <div class="story-content">
+        <h3>USA Co-branding Success</h3>
+        <p>Our client rebranded our oils under their label, resulting in a 3x growth in revenue from North American sales within 6 months.</p>
+      </div>
+    </div>
+    <div class="story">
+      <img src="your-image/story4.jpg" alt="Story 4">
+      <div class="story-content">
+        <h3>Japan's Boutique Wellness</h3>
+        <p>Our certified ingredients power premium spa brands and boutique herbal blends in Japan, known for their transparency and quality.</p>
+      </div>
+    </div>
   </section>
 
   <section class="section">
