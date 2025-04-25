@@ -65,7 +65,7 @@
     .circular-deck {
       position: relative;
       width: 100vw;
-      height: 500px;
+      height: 420px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -75,8 +75,8 @@
     }
     .circular-inner {
       position: relative;
-      width: 800px;
-      height: 350px;
+      width: 700px;
+      height: 300px;
       transform-style: preserve-3d;
       transform: rotateY(0deg);
       transition: transform 1s ease;
@@ -86,8 +86,8 @@
     }
     .product-card {
       position: absolute;
-      width: 120px;
-      height: 180px;
+      width: 66px;
+      height: 99px;
       border-radius: 12px;
       border: 2px solid #000000;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -95,7 +95,7 @@
       align-items: center;
       justify-content: center;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 14px;
       background-color: white;
       transition: transform 0.6s ease, z-index 0.6s;
       transform-style: preserve-3d;
@@ -103,26 +103,31 @@
       cursor: pointer;
     }
     .product-card.front {
-      transform: translateZ(300px) translateY(80px) scale(1.1);
+      transform: translateZ(200px) translateY(60px) scale(1.1);
       z-index: 10;
+    }
+    .product-info {
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+    }
+    .product-info h2 {
+      margin: 0;
+      color: #0f3b2d;
+    }
+    .product-info p {
+      color: #333;
+      max-width: 700px;
+      margin: 10px auto 0;
     }
   </style>
 </head>
 <body>
-<!-- rest of the page unchanged -->
-
-<!-- rest of the page unchanged -->
-
   <canvas id="cursor-particles"></canvas>
-  <div id="header-placeholder"></div>
-  <script>
-    fetch("header.html")
-      .then(res => res.text())
-      .then(data => document.getElementById("header-placeholder").innerHTML = data);
-  </script>
 
   <div class="intro-text">
-    Discover our extensive collection of Ayurvedic and organic wellness products, crafted with care for health-conscious brands and formulators worldwide.
+    <h1>Our Product Range</h1>
+    <p>Explore our premium Ayurvedic products with full traceability, certifications, and diverse application formats tailored for wellness industries worldwide.</p>
   </div>
 
   <div class="categories">
@@ -137,124 +142,59 @@
   <div class="filters">
     <select><option>Botanical Name</option></select>
     <select><option>Product Form</option></select>
-    <select><option>Certification</option></select>
-    <select><option>End-use Application</option></select>
+    <select><option>Certifications</option></select>
+    <select><option>End Use Application</option></select>
     <select><option>Packaging Size</option></select>
   </div>
 
-  <section class="circular-deck">
-    <button class="arrow left" onclick="rotateDeck(-1)">&#8592;</button>
+  <div class="circular-deck">
     <div class="circular-inner" id="deck"></div>
-    <button class="arrow right" onclick="rotateDeck(1)">&#8594;</button>
-  </section>
+  </div>
 
-  <section class="product-info">
-    <h2 id="featured-title">Featured Product: Product 1</h2>
-    <p id="featured-desc">This is a placeholder description for Product 1.</p>
-  </section>
-
-  <div id="footer-placeholder"></div>
-  <script>
-    fetch("footer.html")
-      .then(res => res.text())
-      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
-  </script>
+  <div class="product-info">
+    <h2 id="featured-name">Featured Product</h2>
+    <p id="featured-description">Select a product to see details.</p>
+  </div>
 
   <script>
+    const products = Array.from({length: 25}, (_, i) => ({
+      name: `Product ${i+1}`,
+      description: `This is a placeholder description for Product ${i+1}.`
+    }));
+
     const deck = document.getElementById('deck');
-    const featuredTitle = document.getElementById('featured-title');
-    const featuredDesc = document.getElementById('featured-desc');
-    const totalCards = 25;
-    const radius = 800;
-    const colors = ['#fde9e9', '#fff2cc', '#e2f0d9', '#d9e2f3', '#f4cccc', '#d0e0e3', '#fce5cd'];
-    let angleOffset = 0;
+    let angle = 360 / products.length;
 
-    const descriptions = Array.from({ length: totalCards }, (_, i) => `This is a placeholder description for Product ${i + 1}.`);
-
-    function renderDeck() {
-      deck.innerHTML = '';
-      for (let i = 0; i < totalCards; i++) {
-        const angle = (2 * Math.PI / totalCards) * i + angleOffset;
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        const rotation = ((2 * Math.PI / totalCards) * i + angleOffset) % (2 * Math.PI);
-        if (Math.abs(rotation) < 0.15 || Math.abs(rotation - 2 * Math.PI) < 0.15) {
-          card.classList.add('front');
-          featuredTitle.innerText = `Featured Product: Product ${i + 1}`;
-          featuredDesc.innerText = descriptions[i];
-        }
-        card.style.backgroundColor = colors[i % colors.length];
-        card.style.transform = `rotateY(${angle}rad) translateZ(${radius}px)`;
-        card.innerHTML = `Product ${i + 1}`;
-        deck.appendChild(card);
-      }
-    }
-
-    function rotateDeck(direction) {
-      angleOffset += direction * (2 * Math.PI / totalCards);
-      renderDeck();
-    }
-
-    let isDragging = false;
-    let startX;
-
-    deck.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      startX = e.clientX;
+    products.forEach((product, i) => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.style.backgroundColor = `hsl(${i * 360 / products.length}, 100%, 95%)`;
+      card.textContent = product.name;
+      card.style.transform = `rotateY(${i * angle}deg) translateZ(260px)`;
+      card.dataset.index = i;
+      deck.appendChild(card);
     });
 
-    window.addEventListener('mouseup', () => isDragging = false);
+    let currentIndex = 0;
+    function updateDeck(index) {
+      const cards = deck.querySelectorAll('.product-card');
+      deck.style.transform = `rotateY(${-index * angle}deg)`;
+      cards.forEach(card => card.classList.remove('front'));
+      cards[index].classList.add('front');
 
-    window.addEventListener('mousemove', (e) => {
-      if (isDragging) {
-        const deltaX = e.clientX - startX;
-        angleOffset += deltaX * 0.005;
-        startX = e.clientX;
-        renderDeck();
+      const p = products[index];
+      document.getElementById('featured-name').textContent = p.name;
+      document.getElementById('featured-description').textContent = p.description;
+    }
+
+    deck.addEventListener('click', e => {
+      if (e.target.classList.contains('product-card')) {
+        currentIndex = parseInt(e.target.dataset.index);
+        updateDeck(currentIndex);
       }
     });
 
-    renderDeck();
-  </script>
-
-  <script>
-    const canvas = document.getElementById("cursor-particles");
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    let particles = [];
-    window.addEventListener("mousemove", (e) => {
-      for (let i = 0; i < 2; i++) {
-        particles.push({
-          x: e.clientX,
-          y: e.clientY,
-          size: Math.random() * 1.5 + 0.3,
-          opacity: 0.8,
-          speedX: (Math.random() - 0.5) * 1.2,
-          speedY: (Math.random() - 0.5) * 1.2
-        });
-      }
-    });
-    function handleParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = 0; i < particles.length; i++) {
-        let p = particles[i];
-        p.x += p.speedX;
-        p.y += p.speedY;
-        p.opacity -= 0.015;
-        if (p.opacity <= 0) {
-          particles.splice(i, 1);
-          i--;
-          continue;
-        }
-        ctx.fillStyle = `rgba(15, 59, 45, ${p.opacity})`;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      requestAnimationFrame(handleParticles);
-    }
-    handleParticles();
+    updateDeck(currentIndex);
   </script>
 </body>
 </html>
