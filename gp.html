@@ -18,7 +18,12 @@
       color: #1d1d1d;
     }
     #globeViz {
-      height: 100vh;
+      height: 80vh;
+      background-image: url('your-image/world-embossed-map.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin-top: 100px;
     }
     .country-labels {
       position: absolute;
@@ -79,6 +84,11 @@
       border-radius: 12px;
       box-shadow: 0 0 12px rgba(0,0,0,0.08);
       padding: 30px;
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
     }
     input, textarea, button {
       font-size: 16px;
@@ -222,42 +232,11 @@
       <img src="your-image/logo4.png" alt="Client Logo">
     </div>
   </section>
-
-  <div id="footer-placeholder"></div>
+<div id="footer-placeholder"></div>
   <script>
     fetch("footer.html")
       .then(res => res.text())
       .then(data => document.getElementById("footer-placeholder").innerHTML = data);
-  </script>
-
-  <script>
-    const world = Globe()
-      .globeImageUrl('//unpkg.com/three-globe/example/img/earth-dark.jpg')
-      .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png')
-      .backgroundColor('#f3f8f5')
-      .pointOfView({ lat: 20, lng: 0, altitude: 2 })
-      .showAtmosphere(true)
-      .atmosphereColor("#3aafa9")
-      .atmosphereAltitude(0.2);
-
-    const countryCoords = {
-      India: [20.5937, 78.9629],
-      Germany: [51.1657, 10.4515],
-      USA: [37.0902, -95.7129],
-      Australia: [-25.2744, 133.7751],
-      Japan: [36.2048, 138.2529],
-      "South Africa": [-30.5595, 22.9375]
-    };
-
-    function focusCountry(name) {
-      const [lat, lng] = countryCoords[name];
-      world.pointOfView({ lat, lng, altitude: 1 }, 2000);
-    }
-
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.getElementById('globeViz').appendChild(renderer.domElement);
-    world(renderer.domElement);
   </script>
 
   <script>
@@ -301,3 +280,6 @@
   </script>
 </body>
 </html>
+  
+
+      
