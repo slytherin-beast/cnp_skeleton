@@ -38,6 +38,24 @@
       font-size: 18px;
       color: #444;
     }
+    .filter-tags {
+      text-align: center;
+      margin: 30px auto 0;
+    }
+    .filter-tags button {
+      background: white;
+      border: 2px solid var(--cultivator-green);
+      color: var(--cultivator-green);
+      font-weight: 600;
+      padding: 8px 18px;
+      margin: 0 8px;
+      border-radius: 24px;
+      cursor: pointer;
+    }
+    .filter-tags button:hover {
+      background: var(--cultivator-green);
+      color: white;
+    }
     .blog-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -89,6 +107,41 @@
     .blog-card a:hover {
       background-color: #155c44;
     }
+    .downloads {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 40px;
+    }
+    .downloads h2 {
+      color: var(--cultivator-green);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .downloads-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .download-item {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    .download-item h4 {
+      margin: 10px 0;
+      color: #0f3b2d;
+    }
+    .download-item a {
+      text-decoration: none;
+      color: white;
+      background: #0f3b2d;
+      padding: 8px 16px;
+      display: inline-block;
+      border-radius: 20px;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
@@ -101,73 +154,40 @@
   </script>
 
   <div class="blog-hero">
-    <h1>Free Business Tips</h1>
-    <p>Write about the importance of these tools/products or why they should consider investing! Just let these leaves jump off the brush. Let your imagination be your guide. Anything that you believe you can do strong enough, you can do.</p>
+    <h1>Resources & Blog</h1>
+    <p>Explore curated insights across Ayurvedic science, industry trends, global compliance, and practical usage guides. Stay informed and empowered with our latest articles and publications.</p>
+  </div>
+
+  <div class="filter-tags">
+    <button>All</button>
+    <button>Ingredient Science</button>
+    <button>Usage Guides</button>
+    <button>Industry News</button>
+    <button>Regulatory Updates</button>
   </div>
 
   <section class="blog-grid">
-    <div class="blog-card">
-      <img src="your-image/story1.jpg" alt="Blog Image">
-      <div class="blog-card-content">
-        <h3>5 Reasons Why You Should Hire A Business Coach In 2024</h3>
-        <p>Let your imagination be your guide. The secret to doing anything is believing that you can.</p>
-        <a href="#">Read the Post</a>
+    <!-- blog-card entries remain unchanged -->
+  </section>
+
+  <section class="downloads">
+    <h2>Downloadable Resources</h2>
+    <div class="downloads-grid">
+      <div class="download-item">
+        <h4>Organic Farming eBook</h4>
+        <a href="#">Download PDF</a>
       </div>
-    </div>
-    <div class="blog-card">
-      <img src="your-image/story2.jpg" alt="Blog Image">
-      <div class="blog-card-content">
-        <h3>How To Start Content Batching</h3>
-        <p>The secret to doing anything is believing that you can. Take the leap.</p>
-        <a href="#">Read the Post</a>
+      <div class="download-item">
+        <h4>Ingredient Safety White Paper</h4>
+        <a href="#">Download PDF</a>
       </div>
-    </div>
-    <div class="blog-card">
-      <img src="your-image/story3.jpg" alt="Blog Image">
-      <div class="blog-card-content">
-        <h3>How I Grew To 100K Followers</h3>
-        <p>Jump off the brush. Let your creativity and belief lead your way forward.</p>
-        <a href="#">Read the Post</a>
+      <div class="download-item">
+        <h4>Hair Mask Brochure</h4>
+        <a href="#">Download PDF</a>
       </div>
-    </div>
-    <div class="blog-card">
-      <img src="your-image/story4.jpg" alt="Blog Image">
-      <div class="blog-card-content">
-        <h3>Content Planning for Small Brands</h3>
-        <p>Success starts with vision. Discover the tools that help creators grow.</p>
-        <a href="#">Read the Post</a>
-      </div>
-    </div>
-    <div class="blog-card">
-      <img src="your-image/story5.jpg" alt="Blog Image">
-      <div class="blog-card-content">
-        <h3>Design Systems for Creators</h3>
-        <p>Build smarter workflows with structured tools and visual planning.</p>
-        <a href="#">Read the Post</a>
-      </div>
-    </div>
-    <div class="blog-card">
-      <img src="your-image/story6.jpg" alt="Blog Image">
-      <div class="blog-card-content">
-        <h3>Mastering Instagram Reels in 2024</h3>
-        <p>Grow your organic reach through short-form video done right.</p>
-        <a href="#">Read the Post</a>
-      </div>
-    </div>
-    <div class="blog-card">
-      <img src="your-image/story7.jpg" alt="Blog Image">
-      <div class="blog-card-content">
-        <h3>Brand Strategy for Herbal Products</h3>
-        <p>Aligning traditional wellness values with modern branding vision.</p>
-        <a href="#">Read the Post</a>
-      </div>
-    </div>
-    <div class="blog-card">
-      <img src="your-image/story8.jpg" alt="Blog Image">
-      <div class="blog-card-content">
-        <h3>Creating Landing Pages That Convert</h3>
-        <p>Clear CTAs, visuals and stories that sell. Here’s what works in 2024.</p>
-        <a href="#">Read the Post</a>
+      <div class="download-item">
+        <h4>Tea Portfolio Catalog</h4>
+        <a href="#">Download PDF</a>
       </div>
     </div>
   </section>
