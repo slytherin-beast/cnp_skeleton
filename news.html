@@ -7,127 +7,162 @@
   <style>
     :root {
       --cultivator-green: #0f3b2d;
-      --highlight: #ef4444;
+      --light-green: #eaf4f1;
+      --accent-pink: #e8d4ea;
     }
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #fdfdfd;
-      color: #1d1d1d;
+      background-color: var(--light-green);
     }
-    .news-layout {
-      display: grid;
-      grid-template-columns: 1fr 2fr 1fr;
-      gap: 20px;
-      padding: 40px;
-    }
-    .section-title {
-      font-size: 36px;
-      font-weight: 700;
-      text-align: center;
-      margin-top: 20px;
+    #cursor-particles {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
     }
     .ticker {
-      background: var(--highlight);
+      background: var(--cultivator-green);
       color: white;
-      padding: 10px 20px;
-      overflow: hidden;
-      white-space: nowrap;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      font-weight: 600;
+      padding: 12px 20px;
       font-size: 16px;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
     }
     .ticker span {
       display: inline-block;
       padding-left: 100%;
-      animation: ticker-scroll 25s linear infinite;
+      animation: tickerScroll 25s linear infinite;
     }
-    @keyframes ticker-scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
+    @keyframes tickerScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-100%); }
     }
-    .column {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+    .news-container {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 0;
+      margin-top: 0;
     }
-    .card {
-      background: white;
-      padding: 16px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    .panel {
+      padding: 40px 20px;
+      min-height: 100vh;
     }
-    .card img {
-      width: 100%;
-      border-radius: 8px;
-      margin-bottom: 10px;
+    .left-panel, .right-panel {
+      background: var(--cultivator-green);
+      color: white;
     }
-    .card h4 {
-      font-size: 18px;
-      margin: 10px 0 5px;
+    .left-panel h3, .right-panel h3, .center-panel h3 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid white;
+      padding-bottom: 10px;
+    }
+    .center-panel h3 {
       color: var(--cultivator-green);
+      border-color: var(--cultivator-green);
     }
-    .card p {
+    .left-panel ul, .right-panel ul {
+      list-style: none;
+      padding: 0;
+    }
+    .left-panel li, .right-panel li {
+      margin-bottom: 18px;
+      font-size: 16px;
+    }
+    .center-panel {
+      background: white;
+      padding: 40px 30px;
+    }
+    .news-card {
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+    .news-card h4 {
+      margin: 0 0 6px;
+      font-size: 20px;
+      color: #0f3b2d;
+    }
+    .news-card p {
+      margin: 0;
+      color: #333;
       font-size: 14px;
-      color: #444;
     }
   </style>
 </head>
 <body>
-  <div id="header-placeholder"></div>
-  <script>
-    fetch("header.html")
-      .then(res => res.text())
-      .then(data => document.getElementById("header-placeholder").innerHTML = data);
-  </script>
+<canvas id="cursor-particles"></canvas>
+<div id="header-placeholder"></div>
+<script>
+  fetch("header.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("header-placeholder").innerHTML = data);
+</script>
 
-  <div class="section-title">News, Insights & Careers</div>
-  <div class="ticker">
-    <span>India achieves top organic export status | New EU regulation updates released | 20 new roles open across 4 continents | Global partnerships double since 2023</span>
+<div class="ticker">
+  <span>Trending: EU Green Deal | India Organic Growth | US Clean Label Movement | Climate-Smart Agriculture...</span>
+</div>
+
+<div class="news-container">
+  <div class="panel left-panel">
+    <h3>Insights</h3>
+    <ul>
+      <li>How herbal traceability impacts your supply chain</li>
+      <li>Ayurvedic standards adopted in EU markets</li>
+      <li>Science-backed benefits of Ashwagandha</li>
+      <li>Trends in herbal personal care</li>
+      <li>Consumer behavior in wellness space</li>
+    </ul>
   </div>
 
-  <div class="news-layout">
-    <div class="column">
-      <div class="card">
-        <h4>Industry Insight</h4>
-        <p>5 Ayurvedic trends shaping the future of holistic wellness globally.</p>
-      </div>
-      <div class="card">
-        <h4>Herb Spotlight</h4>
-        <p>Deep dive: The science behind Ashwagandha’s adaptogenic properties.</p>
-      </div>
-    </div>
-
-    <div class="column">
-      <div class="card">
-        <img src="news1.jpg" alt="News">
-        <h4>Govt launches new subsidy scheme for organic cultivators</h4>
-        <p>Promoting export-grade produce with certification support and international outreach assistance.</p>
-      </div>
-      <div class="card">
-        <img src="news2.jpg" alt="Update">
-        <h4>Major US-based wellness chain signs deal with Cultivator</h4>
-        <p>This marks our largest single partnership, expanding our reach across 100+ stores in North America.</p>
-      </div>
-    </div>
-
-    <div class="column">
-      <div class="card">
-        <h4>We’re Hiring!</h4>
-        <p>Looking for passionate individuals in R&D, Export Logistics, and Digital Marketing. Apply today!</p>
-      </div>
-      <div class="card">
-        <h4>Meet our Team</h4>
-        <p>Explore life at Cultivator through employee stories and workplace culture highlights.</p>
-      </div>
-    </div>
+  <div class="panel center-panel">
+    <h3>Latest News</h3>
+    <div id="news-feed"></div>
   </div>
 
-  <div id="footer-placeholder"></div>
-  <script>
-    fetch("footer.html")
-      .then(res => res.text())
-      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
-  </script>
+  <div class="panel right-panel">
+    <h3>Careers</h3>
+    <ul>
+      <li>Marketing Strategist - Remote</li>
+      <li>QA Compliance Officer - Jodhpur</li>
+      <li>Herbal Research Analyst - Hybrid</li>
+      <li>Frontend Developer - Contract</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  const newsFeed = document.getElementById("news-feed");
+  const sampleNews = [
+    { title: "New EU Organic Regulation Takes Effect", desc: "Regulations across EU require updated certification by 2025." },
+    { title: "Cultivator Opens New Facility in Gujarat", desc: "The new solar-powered plant expands production capacity by 40%." },
+    { title: "Partnership with Japan’s Herb Co-op", desc: "Strategic alliance to enhance global presence." },
+    { title: "Global Organic Summit 2025 Recap", desc: "Key learnings from this year’s top organic forum." },
+    { title: "Innovative Packaging Wins Award", desc: "Our recyclable eco-pouch wins Best Packaging Design in India." },
+    { title: "Export Volumes Grow 22% YoY", desc: "Demand from Southeast Asia and Europe leads rise." },
+    { title: "UN Forum Invites Cultivator to Speak", desc: "Our CEO shares insights on sustainable rural upliftment." },
+    { title: "Ayurveda 2.0: Tech Meets Tradition", desc: "How AI is reshaping herbal formulations and delivery." },
+  ];
+
+  function renderNews() {
+    newsFeed.innerHTML = "";
+    sampleNews.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "news-card";
+      card.innerHTML = `<h4>${item.title}</h4><p>${item.desc}</p>`;
+      newsFeed.appendChild(card);
+    });
+  }
+
+  renderNews();
+</script>
+
+<div id="footer-placeholder"></div>
+<script>
+  fetch("footer.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+</script>
 </body>
 </html>
