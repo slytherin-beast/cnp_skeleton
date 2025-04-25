@@ -39,9 +39,12 @@
       color: #444;
     }
     .flip-button {
-      display: flex;
+      display: none;
       justify-content: center;
       margin-top: 30px;
+    }
+    .flip-button.visible {
+      display: flex;
     }
     .flip-button button {
       background: var(--cultivator-green);
@@ -56,15 +59,15 @@
     .category-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
+      gap: 30px;
       padding: 40px;
       max-width: 1000px;
       margin: auto;
     }
     .category-card {
       perspective: 1000px;
-      width: 160px;
-      height: 240px;
+      width: 200px;
+      height: 300px;
     }
     .card-inner {
       position: relative;
@@ -98,17 +101,55 @@
       background: white;
       color: #0f3b2d;
       transform: rotateY(180deg);
-      flex-direction: column;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
       padding: 20px;
-      gap: 12px;
-      overflow-y: auto;
+      text-align: center;
     }
-    .card-back div {
-      background: #f3f8f5;
-      padding: 10px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-      width: 100%;
+    .download-section {
+      text-align: center;
+      margin: 80px auto 40px;
+    }
+    .download-section h2 {
+      color: var(--cultivator-green);
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+    .download-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .download-card {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 4px 4px 0px #ccc;
+      width: 220px;
+      transition: transform 0.3s;
+    }
+    .download-card:hover {
+      transform: translateY(-5px);
+    }
+    .download-card h4 {
+      color: #0f3b2d;
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+    .download-card a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 16px;
+      background: #0f3b2d;
+      color: #fff;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 14px;
     }
   </style>
 </head>
@@ -123,15 +164,35 @@
 
 <div class="blog-hero">
   <h1>Resources & Blog</h1>
-  <p>Click on a category below to reveal related blogs on all cards. Click "Back to Categories" to reset.</p>
+  <p>Click on a category card to flip all cards and view relevant blogs. Click the button to flip back to categories.</p>
 </div>
-<div class="flip-button">
+<div class="flip-button" id="backButton">
   <button onclick="resetFlip()">Back to Categories</button>
 </div>
 
-<section class="category-grid" id="categoryGrid">
-  <!-- 6 cards with front as categories and back side each having 6 blog titles depending on selected category -->
-</section>
+<section class="category-grid" id="categoryGrid"></section>
+
+<div class="download-section">
+  <h2>Downloadable Resources</h2>
+  <div class="download-grid">
+    <div class="download-card">
+      <h4>Organic Farming eBook</h4>
+      <a href="#">Download PDF</a>
+    </div>
+    <div class="download-card">
+      <h4>Ingredient Safety White Paper</h4>
+      <a href="#">Download PDF</a>
+    </div>
+    <div class="download-card">
+      <h4>Hair Mask Brochure</h4>
+      <a href="#">Download PDF</a>
+    </div>
+    <div class="download-card">
+      <h4>Tea Portfolio Catalog</h4>
+      <a href="#">Download PDF</a>
+    </div>
+  </div>
+</div>
 
 <script>
   const categories = ['A', 'B', 'C', 'D', 'E', 'F'];
@@ -147,26 +208,27 @@
   const grid = document.getElementById("categoryGrid");
 
   function createCards() {
-    categories.forEach(category => {
+    for (let i = 0; i < 6; i++) {
       const card = document.createElement("div");
       card.className = "category-card";
       card.innerHTML = `
         <div class="card-inner">
-          <div class="card-front">${category}</div>
-          <div class="card-back" data-category="${category}"></div>
+          <div class="card-front">Category</div>
+          <div class="card-back"></div>
         </div>
       `;
-      card.onclick = () => flipCards(category);
       grid.appendChild(card);
-    });
+    }
   }
 
   function flipCards(category) {
-    document.querySelectorAll(".category-card").forEach((card, index) => {
+    const cards = document.querySelectorAll(".category-card");
+    cards.forEach((card, index) => {
       const back = card.querySelector(".card-back");
-      back.innerHTML = blogTitles[category].map(title => `<div>${title}</div>`).join('');
+      back.innerHTML = blogTitles[category][index];
       card.classList.add("flipped");
     });
+    document.getElementById("backButton").classList.add("visible");
     document.getElementById("categoryGrid").scrollIntoView({ behavior: 'smooth' });
   }
 
@@ -174,9 +236,17 @@
     document.querySelectorAll(".category-card").forEach(card => {
       card.classList.remove("flipped");
     });
+    document.getElementById("backButton").classList.remove("visible");
   }
 
   createCards();
+
+  document.querySelectorAll(".category-card").forEach((card, idx) => {
+    card.addEventListener("click", () => {
+      const category = categories[idx];
+      flipCards(category);
+    });
+  });
 </script>
 
 <div id="footer-placeholder"></div>
