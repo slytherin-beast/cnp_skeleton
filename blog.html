@@ -70,9 +70,8 @@
       height: 200px;
       transition: transform 0.8s;
       transform-style: preserve-3d;
-      cursor: pointer;
     }
-    .card-inner.flip-all {
+    .flipped .card-inner {
       transform: rotateY(180deg);
     }
     .card-front, .card-back {
@@ -120,126 +119,81 @@
 
 <div class="blog-hero">
   <h1>Resources & Blog</h1>
-  <p>Click on a category below to reveal related blogs. Click "Back to Categories" to reset.</p>
+  <p>Click on a category below to reveal related blogs on all cards. Click "Back to Categories" to reset.</p>
 </div>
 <div class="flip-button">
   <button onclick="resetFlip()">Back to Categories</button>
 </div>
 
-<section class="category-grid">
+<section class="category-grid" id="categoryGrid">
+  <!-- 6 cards, each with all 6 category blog sets -->
   <div class="category-card">
-    <div class="card-inner" data-category="Ingredient Science">
-      <div class="card-front">Ingredient Science</div>
-      <div class="card-back">
-        <div>5 Ayurvedic Herbs You Should Know</div>
-        <div>Power of Turmeric in Modern Wellness</div>
+    <div class="card-inner">
+      <div class="card-front">A</div>
+      <div class="card-back" data-category="A">
+        <div>Blog A1</div><div>Blog A2</div><div>Blog A3</div><div>Blog A4</div><div>Blog A5</div><div>Blog A6</div>
       </div>
     </div>
   </div>
   <div class="category-card">
-    <div class="card-inner" data-category="Usage Guides">
-      <div class="card-front">Usage Guides</div>
-      <div class="card-back">
-        <div>How to Brew Herbal Teas Properly</div>
-        <div>Using Oils for Hair Strength</div>
+    <div class="card-inner">
+      <div class="card-front">B</div>
+      <div class="card-back" data-category="B">
+        <div>Blog B1</div><div>Blog B2</div><div>Blog B3</div><div>Blog B4</div><div>Blog B5</div><div>Blog B6</div>
       </div>
     </div>
   </div>
   <div class="category-card">
-    <div class="card-inner" data-category="Industry News">
-      <div class="card-front">Industry News</div>
-      <div class="card-back">
-        <div>Ayurveda Industry Growth in 2025</div>
-        <div>Global Trends in Herbal Beauty</div>
+    <div class="card-inner">
+      <div class="card-front">C</div>
+      <div class="card-back" data-category="C">
+        <div>Blog C1</div><div>Blog C2</div><div>Blog C3</div><div>Blog C4</div><div>Blog C5</div><div>Blog C6</div>
       </div>
     </div>
   </div>
   <div class="category-card">
-    <div class="card-inner" data-category="Regulatory Updates">
-      <div class="card-front">Regulatory Updates</div>
-      <div class="card-back">
-        <div>New EU Organic Label Rules</div>
-        <div>India’s FSSAI on Herbal Claims</div>
+    <div class="card-inner">
+      <div class="card-front">D</div>
+      <div class="card-back" data-category="D">
+        <div>Blog D1</div><div>Blog D2</div><div>Blog D3</div><div>Blog D4</div><div>Blog D5</div><div>Blog D6</div>
       </div>
     </div>
   </div>
   <div class="category-card">
-    <div class="card-inner" data-category="Sustainability">
-      <div class="card-front">Sustainability</div>
-      <div class="card-back">
-        <div>Reducing Water Waste in Farming</div>
-        <div>Zero-Waste Packaging Projects</div>
+    <div class="card-inner">
+      <div class="card-front">E</div>
+      <div class="card-back" data-category="E">
+        <div>Blog E1</div><div>Blog E2</div><div>Blog E3</div><div>Blog E4</div><div>Blog E5</div><div>Blog E6</div>
       </div>
     </div>
   </div>
   <div class="category-card">
-    <div class="card-inner" data-category="Fair Trade & Community">
-      <div class="card-front">Fair Trade & Community</div>
-      <div class="card-back">
-        <div>Empowering Women Farmers</div>
-        <div>Farmer Education Stories</div>
+    <div class="card-inner">
+      <div class="card-front">F</div>
+      <div class="card-back" data-category="F">
+        <div>Blog F1</div><div>Blog F2</div><div>Blog F3</div><div>Blog F4</div><div>Blog F5</div><div>Blog F6</div>
       </div>
     </div>
   </div>
 </section>
 
 <script>
-  const canvas = document.getElementById("cursor-particles");
-  const ctx = canvas.getContext("2d");
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  let particles = [];
-  window.addEventListener("mousemove", (e) => {
-    for (let i = 0; i < 2; i++) {
-      particles.push({
-        x: e.clientX,
-        y: e.clientY,
-        size: Math.random() * 1.5 + 0.3,
-        opacity: 0.8,
-        speedX: (Math.random() - 0.5) * 1.2,
-        speedY: (Math.random() - 0.5) * 1.2
-      });
-    }
-  });
-  function handleParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (let i = 0; i < particles.length; i++) {
-      let p = particles[i];
-      p.x += p.speedX;
-      p.y += p.speedY;
-      p.opacity -= 0.015;
-      if (p.opacity <= 0) {
-        particles.splice(i, 1);
-        i--;
-        continue;
-      }
-      ctx.fillStyle = `rgba(15, 59, 45, ${p.opacity})`;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fill();
-    }
-    requestAnimationFrame(handleParticles);
-  }
-  handleParticles();
+  const grid = document.getElementById("categoryGrid");
+  const cards = document.querySelectorAll(".category-card");
 
-  const cards = document.querySelectorAll('.card-inner');
-  cards.forEach(card => {
-    card.addEventListener('click', () => {
-      const selectedCategory = card.dataset.category;
-      cards.forEach(c => {
-        if (c.dataset.category === selectedCategory) {
-          c.classList.add('flip-all');
-        } else {
-          c.classList.remove('flip-all');
-        }
-      });
+  cards.forEach((card, index) => {
+    card.addEventListener("click", () => {
+      grid.classList.add("flipped");
+      cards.forEach(c => c.classList.add("flipped"));
     });
   });
 
   function resetFlip() {
-    cards.forEach(c => c.classList.remove('flip-all'));
+    grid.classList.remove("flipped");
+    cards.forEach(c => c.classList.remove("flipped"));
   }
 </script>
+
 <div id="footer-placeholder"></div>
 <script>
   fetch("footer.html")
