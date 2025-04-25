@@ -56,18 +56,20 @@
     .category-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 40px;
       padding: 40px;
       max-width: 1000px;
       margin: auto;
     }
     .category-card {
       perspective: 1000px;
+      width: 160px;
+      height: 240px;
     }
     .card-inner {
       position: relative;
       width: 100%;
-      height: 200px;
+      height: 100%;
       transition: transform 0.8s;
       transform-style: preserve-3d;
     }
@@ -86,6 +88,8 @@
       font-size: 18px;
       font-weight: 600;
       color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 2px solid #ccc;
     }
     .card-front {
       background: var(--cultivator-green);
@@ -126,72 +130,53 @@
 </div>
 
 <section class="category-grid" id="categoryGrid">
-  <!-- 6 cards, each with all 6 category blog sets -->
-  <div class="category-card">
-    <div class="card-inner">
-      <div class="card-front">A</div>
-      <div class="card-back" data-category="A">
-        <div>Blog A1</div><div>Blog A2</div><div>Blog A3</div><div>Blog A4</div><div>Blog A5</div><div>Blog A6</div>
-      </div>
-    </div>
-  </div>
-  <div class="category-card">
-    <div class="card-inner">
-      <div class="card-front">B</div>
-      <div class="card-back" data-category="B">
-        <div>Blog B1</div><div>Blog B2</div><div>Blog B3</div><div>Blog B4</div><div>Blog B5</div><div>Blog B6</div>
-      </div>
-    </div>
-  </div>
-  <div class="category-card">
-    <div class="card-inner">
-      <div class="card-front">C</div>
-      <div class="card-back" data-category="C">
-        <div>Blog C1</div><div>Blog C2</div><div>Blog C3</div><div>Blog C4</div><div>Blog C5</div><div>Blog C6</div>
-      </div>
-    </div>
-  </div>
-  <div class="category-card">
-    <div class="card-inner">
-      <div class="card-front">D</div>
-      <div class="card-back" data-category="D">
-        <div>Blog D1</div><div>Blog D2</div><div>Blog D3</div><div>Blog D4</div><div>Blog D5</div><div>Blog D6</div>
-      </div>
-    </div>
-  </div>
-  <div class="category-card">
-    <div class="card-inner">
-      <div class="card-front">E</div>
-      <div class="card-back" data-category="E">
-        <div>Blog E1</div><div>Blog E2</div><div>Blog E3</div><div>Blog E4</div><div>Blog E5</div><div>Blog E6</div>
-      </div>
-    </div>
-  </div>
-  <div class="category-card">
-    <div class="card-inner">
-      <div class="card-front">F</div>
-      <div class="card-back" data-category="F">
-        <div>Blog F1</div><div>Blog F2</div><div>Blog F3</div><div>Blog F4</div><div>Blog F5</div><div>Blog F6</div>
-      </div>
-    </div>
-  </div>
+  <!-- 6 cards with front as categories and back side each having 6 blog titles depending on selected category -->
 </section>
 
 <script>
-  const grid = document.getElementById("categoryGrid");
-  const cards = document.querySelectorAll(".category-card");
+  const categories = ['A', 'B', 'C', 'D', 'E', 'F'];
+  const blogTitles = {
+    A: ['Blog A1', 'Blog A2', 'Blog A3', 'Blog A4', 'Blog A5', 'Blog A6'],
+    B: ['Blog B1', 'Blog B2', 'Blog B3', 'Blog B4', 'Blog B5', 'Blog B6'],
+    C: ['Blog C1', 'Blog C2', 'Blog C3', 'Blog C4', 'Blog C5', 'Blog C6'],
+    D: ['Blog D1', 'Blog D2', 'Blog D3', 'Blog D4', 'Blog D5', 'Blog D6'],
+    E: ['Blog E1', 'Blog E2', 'Blog E3', 'Blog E4', 'Blog E5', 'Blog E6'],
+    F: ['Blog F1', 'Blog F2', 'Blog F3', 'Blog F4', 'Blog F5', 'Blog F6'],
+  };
 
-  cards.forEach((card, index) => {
-    card.addEventListener("click", () => {
-      grid.classList.add("flipped");
-      cards.forEach(c => c.classList.add("flipped"));
+  const grid = document.getElementById("categoryGrid");
+
+  function createCards() {
+    categories.forEach(category => {
+      const card = document.createElement("div");
+      card.className = "category-card";
+      card.innerHTML = `
+        <div class="card-inner">
+          <div class="card-front">${category}</div>
+          <div class="card-back" data-category="${category}"></div>
+        </div>
+      `;
+      card.onclick = () => flipCards(category);
+      grid.appendChild(card);
     });
-  });
+  }
+
+  function flipCards(category) {
+    document.querySelectorAll(".category-card").forEach((card, index) => {
+      const back = card.querySelector(".card-back");
+      back.innerHTML = blogTitles[category].map(title => `<div>${title}</div>`).join('');
+      card.classList.add("flipped");
+    });
+    document.getElementById("categoryGrid").scrollIntoView({ behavior: 'smooth' });
+  }
 
   function resetFlip() {
-    grid.classList.remove("flipped");
-    cards.forEach(c => c.classList.remove("flipped"));
+    document.querySelectorAll(".category-card").forEach(card => {
+      card.classList.remove("flipped");
+    });
   }
+
+  createCards();
 </script>
 
 <div id="footer-placeholder"></div>
