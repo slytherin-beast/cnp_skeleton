@@ -24,7 +24,7 @@
     }
     .intro-text {
       text-align: center;
-      padding: 60px 20px 20px;
+      padding: 60px 20px 0px;
       color: #0f3b2d;
       font-size: 18px;
       max-width: 900px;
@@ -35,7 +35,7 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 12px;
-      margin: 20px auto 30px;
+      margin: 20px auto;
     }
     .categories button {
       background: #ffffff;
@@ -62,17 +62,17 @@
       font-size: 14px;
       min-width: 180px;
     }
-    .deck-and-details {
+    .deck-container {
       display: flex;
-      justify-content: space-between;
       align-items: flex-start;
-      padding: 60px;
+      justify-content: flex-start;
+      padding: 40px 60px;
       gap: 40px;
     }
     .circular-deck {
       position: relative;
-      width: 600px;
-      height: 240px;
+      width: 520px;
+      height: 200px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -82,16 +82,16 @@
     }
     .circular-inner {
       position: relative;
-      width: 600px;
-      height: 180px;
+      width: 520px;
+      height: 200px;
       transform-style: preserve-3d;
       transform: rotateY(0deg);
-      transition: transform 0.5s ease;
+      transition: transform 0.6s ease-in-out;
     }
     .product-card {
       position: absolute;
-      width: 90px;
-      height: 140px;
+      width: 70px;
+      height: 110px;
       border-radius: 12px;
       border: 2px solid #000000;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -99,18 +99,19 @@
       align-items: center;
       justify-content: center;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 14px;
       background-color: white;
-      transition: transform 0.5s ease, z-index 0.5s;
+      transition: transform 0.6s ease, z-index 0.6s;
       transform-style: preserve-3d;
       color: #0f3b2d;
       cursor: pointer;
     }
     .product-card.front {
-      transform: translateZ(220px) translateY(10px) scale(1.2);
+      transform: translateZ(180px) translateY(0px) scale(1.3);
       z-index: 10;
     }
     .details-info {
+      flex: 1;
       max-width: 600px;
       color: #0f3b2d;
     }
@@ -135,23 +136,16 @@
       cursor: pointer;
       z-index: 5;
     }
-    .arrow.left { left: 10px; }
-    .arrow.right { right: 10px; }
+    .arrow.left { left: -50px; }
+    .arrow.right { right: -50px; }
   </style>
 </head>
 <body>
   <canvas id="cursor-particles"></canvas>
-  <div id="header-placeholder"></div>
-  <script>
-    fetch("header.html")
-      .then(res => res.text())
-      .then(data => document.getElementById("header-placeholder").innerHTML = data);
-  </script>
-
   <div class="intro-text">
-    Discover our extensive collection of Ayurvedic and organic wellness products, crafted with care for health-conscious brands and formulators worldwide.
+    <h1>Our Product Range</h1>
+    <p>Discover our extensive collection of Ayurvedic and organic wellness products, crafted with care for health-conscious brands and formulators worldwide.</p>
   </div>
-
   <div class="categories">
     <button>Hair Care</button>
     <button>Skin Care</button>
@@ -160,28 +154,24 @@
     <button>Supplements</button>
     <button>Raw Herbs</button>
   </div>
-
   <div class="filters">
     <select><option>Botanical Name</option></select>
     <select><option>Product Form</option></select>
-    <select><option>Certification</option></select>
+    <select><option>Certifications</option></select>
     <select><option>End-use Application</option></select>
     <select><option>Packaging Size</option></select>
   </div>
-
-  <section class="circular-deck">
-    <button class="arrow left" onclick="rotateDeck(-1)">&#8592;</button>
-    <div class="circular-inner" id="deck"></div>
-    <button class="arrow right" onclick="rotateDeck(1)">&#8594;</button>
-  </section>
-
-  <section class="product-details" id="details-section">
-    <div class="details-card" id="selected-card">Product 1</div>
-    <div class="details-info">
-      <h3 id="detail-title">Featured Product: Product 1</h3>
-      <p id="detail-desc">This is a placeholder description for Product 1.</p>
+  <div class="deck-container">
+    <div class="circular-deck">
+      <div class="circular-inner" id="circular-inner"></div>
+      <button class="arrow left" onclick="rotateDeck(-1)">&#8592;</button>
+      <button class="arrow right" onclick="rotateDeck(1)">&#8594;</button>
     </div>
-  </section>
+    <div class="details-info" id="details-info">
+      <h3>Featured Product</h3>
+      <p>Click a product card to view its details.</p>
+    </div>
+  </div>
 
   <div id="footer-placeholder"></div>
   <script>
