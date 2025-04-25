@@ -27,6 +27,7 @@
       max-width: 100%;
       height: 500px;
       border-radius: 16px;
+      margin-bottom: 30px;
     }
     .lab-grid {
       display: grid;
@@ -39,6 +40,12 @@
       border: 1px solid #ccc;
       border-radius: 16px;
       background: #f9f9f9;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+    .lab-box:hover {
+      transform: translateY(-10px) rotateX(2deg);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
     }
     .cert-icons {
       display: flex;
@@ -92,6 +99,9 @@
   <section class="video-tour">
     <h2>Experience Our Facility</h2>
     <iframe src="https://www.youtube.com/embed/sample-video" frameborder="0" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/sample-video2" frameborder="0" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/sample-video3" frameborder="0" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/sample-video4" frameborder="0" allowfullscreen></iframe>
   </section>
 
   <section>
@@ -109,6 +119,18 @@
         <h3>Microbiology Lab</h3>
         <p>Equipped to detect microbial load, pathogens, and ensure safety standards.</p>
       </div>
+      <div class="lab-box">
+        <h3>TLC Chromatography</h3>
+        <p>Thin Layer Chromatography for herbal fingerprinting and quality control.</p>
+      </div>
+      <div class="lab-box">
+        <h3>UV-Vis Spectrophotometer</h3>
+        <p>Measures absorbance and identifies bioactive compounds in extracts.</p>
+      </div>
+      <div class="lab-box">
+        <h3>Particle Size Analyzer</h3>
+        <p>Ensures consistency in powdered products by measuring granule sizes.</p>
+      </div>
     </div>
   </section>
 
@@ -117,6 +139,8 @@
     <div class="cert-icons">
       <img src="/images/gmp-logo.png" alt="GMP">
       <img src="/images/iso22000-logo.png" alt="ISO 22000">
+      <img src="/images/fssai-logo.png" alt="FSSAI">
+      <img src="/images/nabl-logo.png" alt="NABL">
     </div>
   </section>
 
@@ -127,6 +151,8 @@
       <li>In-process quality inspections</li>
       <li>Finished goods testing: physical, chemical, and microbiological</li>
       <li>Third-party lab verification when required</li>
+      <li>Retention sample review after every batch</li>
+      <li>Batch-to-batch consistency audits</li>
     </ul>
   </section>
 
