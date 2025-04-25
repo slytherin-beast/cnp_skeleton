@@ -188,7 +188,6 @@
       <img src="/images/blog1.jpg" alt="Blog 1">
       <h3>5 Ayurvedic Herbs You Should Know</h3>
     </div>
-    <!-- Add more blog-card-stack divs here -->
   </div>
   <div class="selected-blog" id="blog-detail">
     <img src="" alt="">
@@ -233,6 +232,7 @@
     detail.querySelector('h3').innerText = title;
     detail.querySelector('p').innerText = "Read the full article for in-depth information on this Ayurvedic topic.";
     detail.classList.add("active");
+    detail.scrollIntoView({ behavior: 'smooth' });
   }
 </script>
 <script>
