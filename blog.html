@@ -59,15 +59,15 @@
     .category-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
+      gap: 40px;
       padding: 40px;
       max-width: 1000px;
       margin: auto;
     }
     .category-card {
       perspective: 1000px;
-      width: 200px;
-      height: 300px;
+      width: 240px;
+      height: 340px;
     }
     .card-inner {
       position: relative;
@@ -93,6 +93,8 @@
       color: white;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       border: 2px solid #ccc;
+      padding: 16px;
+      text-align: center;
     }
     .card-front {
       background: var(--cultivator-green);
@@ -101,12 +103,6 @@
       background: white;
       color: #0f3b2d;
       transform: rotateY(180deg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      padding: 20px;
-      text-align: center;
     }
     .download-section {
       text-align: center;
@@ -213,21 +209,29 @@
       card.className = "category-card";
       card.innerHTML = `
         <div class="card-inner">
-          <div class="card-front">Category</div>
+          <div class="card-front">${categories[i]}</div>
           <div class="card-back"></div>
         </div>
       `;
+      card.addEventListener("click", () => flipCards(categories[i]));
       grid.appendChild(card);
     }
   }
 
   function flipCards(category) {
     const cards = document.querySelectorAll(".category-card");
-    cards.forEach((card, index) => {
+    cards.forEach((card, i) => {
       const back = card.querySelector(".card-back");
-      back.innerHTML = blogTitles[category][index];
-      card.classList.add("flipped");
+      back.innerHTML = blogTitles[category][i];
     });
+
+    const randomOrder = [...cards].sort(() => Math.random() - 0.5);
+    randomOrder.forEach((card, index) => {
+      setTimeout(() => {
+        card.classList.add("flipped");
+      }, index * 200);
+    });
+
     document.getElementById("backButton").classList.add("visible");
     document.getElementById("categoryGrid").scrollIntoView({ behavior: 'smooth' });
   }
@@ -240,13 +244,6 @@
   }
 
   createCards();
-
-  document.querySelectorAll(".category-card").forEach((card, idx) => {
-    card.addEventListener("click", () => {
-      const category = categories[idx];
-      flipCards(category);
-    });
-  });
 </script>
 
 <div id="footer-placeholder"></div>
