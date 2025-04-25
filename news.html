@@ -7,7 +7,7 @@
   <style>
     :root {
       --cultivator-green: #0f3b2d;
-      --light-green: #eaf4f1;
+      --light-green: #ecf4f1;
       --accent-pink: #e8d4ea;
     }
     body {
@@ -49,26 +49,47 @@
       min-height: 100vh;
     }
     .left-panel, .right-panel {
-      background: var(--cultivator-green);
-      color: white;
+      background: var(--light-green);
+      color: #0f3b2d;
     }
     .left-panel h3, .right-panel h3, .center-panel h3 {
       font-size: 22px;
       margin-bottom: 20px;
-      border-bottom: 2px solid white;
+      border-bottom: 2px solid #0f3b2d;
       padding-bottom: 10px;
-    }
-    .center-panel h3 {
-      color: var(--cultivator-green);
-      border-color: var(--cultivator-green);
     }
     .left-panel ul, .right-panel ul {
       list-style: none;
       padding: 0;
     }
-    .left-panel li, .right-panel li {
-      margin-bottom: 18px;
-      font-size: 16px;
+    .card-block {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+      padding: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .card-block img {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    .card-block div {
+      flex: 1;
+    }
+    .card-block h4 {
+      margin: 0 0 6px;
+      font-size: 18px;
+      color: #0f3b2d;
+    }
+    .card-block p {
+      margin: 0;
+      color: #555;
+      font-size: 14px;
     }
     .center-panel {
       background: white;
@@ -107,13 +128,41 @@
 <div class="news-container">
   <div class="panel left-panel">
     <h3>Insights</h3>
-    <ul>
-      <li>How herbal traceability impacts your supply chain</li>
-      <li>Ayurvedic standards adopted in EU markets</li>
-      <li>Science-backed benefits of Ashwagandha</li>
-      <li>Trends in herbal personal care</li>
-      <li>Consumer behavior in wellness space</li>
-    </ul>
+    <div class="card-block">
+      <img src="https://via.placeholder.com/80x80?text=1" alt="">
+      <div>
+        <h4>Herbal Traceability</h4>
+        <p>How traceability impacts your supply chain and consumer trust.</p>
+      </div>
+    </div>
+    <div class="card-block">
+      <img src="https://via.placeholder.com/80x80?text=2" alt="">
+      <div>
+        <h4>Ayurveda in EU</h4>
+        <p>New European markets are adopting Ayurvedic standards.</p>
+      </div>
+    </div>
+    <div class="card-block">
+      <img src="https://via.placeholder.com/80x80?text=3" alt="">
+      <div>
+        <h4>Ashwagandha Study</h4>
+        <p>Science-backed mental and physical benefits explained.</p>
+      </div>
+    </div>
+    <div class="card-block">
+      <img src="https://via.placeholder.com/80x80?text=4" alt="">
+      <div>
+        <h4>Personal Care Trends</h4>
+        <p>Growth of herbal ingredients in cosmetic products.</p>
+      </div>
+    </div>
+    <div class="card-block">
+      <img src="https://via.placeholder.com/80x80?text=5" alt="">
+      <div>
+        <h4>Wellness Shifts</h4>
+        <p>Consumer values are changing in the natural wellness space.</p>
+      </div>
+    </div>
   </div>
 
   <div class="panel center-panel">
@@ -123,12 +172,34 @@
 
   <div class="panel right-panel">
     <h3>Careers</h3>
-    <ul>
-      <li>Marketing Strategist - Remote</li>
-      <li>QA Compliance Officer - Jodhpur</li>
-      <li>Herbal Research Analyst - Hybrid</li>
-      <li>Frontend Developer - Contract</li>
-    </ul>
+    <div class="card-block">
+      <img src="https://via.placeholder.com/80x80?text=M" alt="">
+      <div>
+        <h4>Marketing Strategist</h4>
+        <p>Remote | Drive brand visibility & campaign success globally.</p>
+      </div>
+    </div>
+    <div class="card-block">
+      <img src="https://via.placeholder.com/80x80?text=Q" alt="">
+      <div>
+        <h4>QA Compliance Officer</h4>
+        <p>Jodhpur | Ensure certification & safety protocols are met.</p>
+      </div>
+    </div>
+    <div class="card-block">
+      <img src="https://via.placeholder.com/80x80?text=R" alt="">
+      <div>
+        <h4>Research Analyst</h4>
+        <p>Hybrid | Conduct herbal efficacy research & documentation.</p>
+      </div>
+    </div>
+    <div class="card-block">
+      <img src="https://via.placeholder.com/80x80?text=D" alt="">
+      <div>
+        <h4>Frontend Developer</h4>
+        <p>Contract | Build responsive interfaces for internal tools.</p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -147,14 +218,18 @@
 
   function renderNews() {
     newsFeed.innerHTML = "";
-    sampleNews.forEach(item => {
+    sampleNews.forEach((item, index) => {
       const card = document.createElement("div");
-      card.className = "news-card";
-      card.innerHTML = `<h4>${item.title}</h4><p>${item.desc}</p>`;
+      card.className = "card-block";
+      card.innerHTML = `
+        <img src="https://via.placeholder.com/80x80?text=${index + 1}" alt="">
+        <div>
+          <h4>${item.title}</h4>
+          <p>${item.desc}</p>
+        </div>`;
       newsFeed.appendChild(card);
     });
   }
-
   renderNews();
 </script>
 
