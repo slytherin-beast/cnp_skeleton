@@ -95,34 +95,12 @@
 </head>
 <body>
   <header>
-    <div style="display: flex; align-items: center; justify-content: flex-start; gap: 60px; width: 100%;">
-      <a href="index.html">
-  <img src="Cultivators Logo New.png" style="height: 50px;" alt="Cultivator Logo" style="height: 50px;">
-      </a>
-      <nav class="header-menu">
-        <div class="dropdown">
-          <a href="#">Company ▼</a>
-          <div class="dropdown-content">
-            <a href="Certificate.html">Certifications & Compliance</a>
-            <a href="#">Manufacturing & Quality</a>
-            <a href="#">Sustainability</a>
-            <a href="#">Global Presence / Distribution</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="#">Ingredient Portfolio ▼</a>
-          <div class="dropdown-content">
-            <a href="#">Herbal Teas</a>
-            <a href="#">Hair Masks</a>
-            <a href="#">Oils</a>
-          </div>
-        </div>
-        <a href="about.html">About us</a>
-        <a href="#">Resources / Blog</a>
-        <a href="#">News & Insights</a>
-        <a href="#">Contact Us</a>
-      </nav>
-    </div>
+    <div id="header-placeholder"></div>
+<script>
+  fetch("header.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("header-placeholder").innerHTML = data);
+</script>
   </header>
 
 <section style="padding: 60px 40px 0 40px; background: #ffffff; color: #1d1d1d; font-family: 'Segoe UI', sans-serif;">
