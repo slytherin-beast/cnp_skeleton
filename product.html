@@ -48,7 +48,7 @@
     }
     .filters {
       max-width: 1000px;
-      margin: 0 auto 40px;
+      margin: 0 auto 60px;
       padding: 0 20px;
       display: flex;
       flex-wrap: wrap;
@@ -64,30 +64,28 @@
     }
     .circular-deck {
       position: relative;
-      width: 80vw;
-      height: 800px;
+      width: 100vw;
+      height: 600px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      perspective: 1000px;
+      justify-content: flex-start;
+      perspective: 1200px;
       transform-style: preserve-3d;
+      margin-left: 5%;
       z-index: 1;
     }
     .circular-inner {
       position: relative;
-      width: 1200px;
+      width: 1800px;
       height: 300px;
       transform-style: preserve-3d;
       transform: rotateY(0deg);
       transition: transform 1.5s ease-in-out;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
     .product-card {
       position: absolute;
-      width: 150px;
-      height: 220px;
+      width: 130px;
+      height: 200px;
       border-radius: 12px;
       border: 2px solid #000000;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -109,25 +107,11 @@
     .product-details {
       display: flex;
       align-items: flex-start;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 40px;
-      padding: 60px;
+      padding: 40px 80px;
       max-width: 1200px;
       margin: 0 auto;
-    }
-    .details-card {
-      width: 300px;
-      height: 400px;
-      background: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      font-weight: bold;
-      color: #0f3b2d;
-      border: 2px solid #000;
     }
     .details-info {
       max-width: 600px;
@@ -154,8 +138,8 @@
       cursor: pointer;
       z-index: 5;
     }
-    .arrow.left { left: 10%; }
-    .arrow.right { right: 10%; }
+    .arrow.left { left: 10px; }
+    .arrow.right { right: 10px; }
   </style>
 </head>
 <body>
@@ -195,7 +179,6 @@
   </section>
 
   <section class="product-details" id="details-section">
-    <div class="details-card" id="selected-card">Product 1</div>
     <div class="details-info">
       <h3 id="detail-title">Featured Product: Product 1</h3>
       <p id="detail-desc">This is a placeholder description for Product 1.</p>
@@ -211,12 +194,10 @@
 
   <script>
     const deck = document.getElementById('deck');
-    const selectedCard = document.getElementById('selected-card');
     const detailTitle = document.getElementById('detail-title');
     const detailDesc = document.getElementById('detail-desc');
-    const detailSection = document.getElementById('details-section');
-    const totalCards = 25;
-    const radius = 800;
+    const totalCards = 35;
+    const radius = 700;
     const colors = ['#fde9e9', '#fff2cc', '#e2f0d9', '#d9e2f3', '#f4cccc', '#d0e0e3', '#fce5cd'];
     let angleOffset = 0;
 
@@ -232,11 +213,8 @@
         card.style.transform = `rotateY(${angle}rad) translateZ(${radius}px)`;
         card.innerText = `Product ${i + 1}`;
         card.addEventListener('click', () => {
-          selectedCard.innerText = `Product ${i + 1}`;
-          selectedCard.style.backgroundColor = colors[i % colors.length];
           detailTitle.innerText = `Featured Product: Product ${i + 1}`;
           detailDesc.innerText = descriptions[i];
-          detailSection.scrollIntoView({ behavior: 'smooth' });
         });
         deck.appendChild(card);
       }
@@ -264,46 +242,6 @@
     });
 
     renderDeck();
-  </script>
-
-  <script>
-    const canvas = document.getElementById("cursor-particles");
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    let particles = [];
-    window.addEventListener("mousemove", (e) => {
-      for (let i = 0; i < 2; i++) {
-        particles.push({
-          x: e.clientX,
-          y: e.clientY,
-          size: Math.random() * 1.5 + 0.3,
-          opacity: 0.8,
-          speedX: (Math.random() - 0.5) * 1.2,
-          speedY: (Math.random() - 0.5) * 1.2
-        });
-      }
-    });
-    function handleParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = 0; i < particles.length; i++) {
-        let p = particles[i];
-        p.x += p.speedX;
-        p.y += p.speedY;
-        p.opacity -= 0.015;
-        if (p.opacity <= 0) {
-          particles.splice(i, 1);
-          i--;
-          continue;
-        }
-        ctx.fillStyle = `rgba(15, 59, 45, ${p.opacity})`;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      requestAnimationFrame(handleParticles);
-    }
-    handleParticles();
   </script>
 </body>
 </html>
