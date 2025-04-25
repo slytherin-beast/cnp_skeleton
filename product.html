@@ -48,7 +48,7 @@
     }
     .filters {
       max-width: 1000px;
-      margin: 0 auto 60px;
+      margin: 0 auto 30px;
       padding: 0 20px;
       display: flex;
       flex-wrap: wrap;
@@ -65,56 +65,52 @@
     .circular-deck {
       position: relative;
       width: 100vw;
-      height: 600px;
+      height: 400px;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: flex-start;
       perspective: 1200px;
       transform-style: preserve-3d;
-      margin-left: 5%;
+      margin: 0 0 80px 5%;
       z-index: 1;
     }
     .circular-inner {
       position: relative;
-      width: 1800px;
+      width: 1600px;
       height: 300px;
       transform-style: preserve-3d;
       transform: rotateY(0deg);
-      transition: transform 1.5s ease-in-out;
+      transition: transform 1.2s ease-in-out;
     }
     .product-card {
       position: absolute;
-      width: 130px;
-      height: 200px;
+      width: 120px;
+      height: 180px;
       border-radius: 12px;
       border: 2px solid #000000;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: bold;
-      font-size: 20px;
+      font-size: 18px;
       background-color: white;
       transition: transform 1.2s ease-in-out, z-index 0.6s;
       transform-style: preserve-3d;
       color: #0f3b2d;
       cursor: pointer;
     }
-    .product-card.front {
-      transform: translateZ(500px) translateY(100px) scale(1.2);
+    .product-card.active {
+      transform: translateZ(120px) translateY(-10px) scale(1.2);
       z-index: 10;
     }
     .product-details {
       display: flex;
       align-items: flex-start;
-      justify-content: flex-start;
-      gap: 40px;
-      padding: 40px 80px;
-      max-width: 1200px;
-      margin: 0 auto;
+      justify-content: flex-end;
+      padding: 0 80px 60px;
     }
     .details-info {
-      max-width: 600px;
+      max-width: 400px;
       color: #0f3b2d;
     }
     .details-info h3 {
@@ -196,8 +192,8 @@
     const deck = document.getElementById('deck');
     const detailTitle = document.getElementById('detail-title');
     const detailDesc = document.getElementById('detail-desc');
-    const totalCards = 35;
-    const radius = 700;
+    const totalCards = 45;
+    const radius = 600;
     const colors = ['#fde9e9', '#fff2cc', '#e2f0d9', '#d9e2f3', '#f4cccc', '#d0e0e3', '#fce5cd'];
     let angleOffset = 0;
 
@@ -212,10 +208,16 @@
         card.style.backgroundColor = colors[i % colors.length];
         card.style.transform = `rotateY(${angle}rad) translateZ(${radius}px)`;
         card.innerText = `Product ${i + 1}`;
+
         card.addEventListener('click', () => {
           detailTitle.innerText = `Featured Product: Product ${i + 1}`;
           detailDesc.innerText = descriptions[i];
         });
+
+        if (Math.abs(angle % (2 * Math.PI)) < 0.2) {
+          card.classList.add('active');
+        }
+
         deck.appendChild(card);
       }
     }
