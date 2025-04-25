@@ -4,9 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Global Presence & Distribution - Cultivator</title>
-  <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
-  <script src="https://unpkg.com/three-globe@2.28.0/dist/three-globe.min.js"></script>
-  <script src="https://unpkg.com/d3@7"></script>
   <style>
     :root {
       --cultivator-green: #0f3b2d;
@@ -17,38 +14,16 @@
       background-color: #f3f8f5;
       color: #1d1d1d;
     }
-    #globeViz {
+    #mapContainer {
       height: 80vh;
-      background-image: url('your-image/world-embossed-map.png');
+      background-image: url('worldmap.png');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
+      box-shadow: inset 0px 8px 20px rgba(0, 0, 0, 0.2), 0 10px 30px rgba(0, 0, 0, 0.3);
       margin-top: 100px;
-    }
-    .country-labels {
-      position: absolute;
-      top: 60px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 100;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      width: 90vw;
-    }
-    .country-button {
-      padding: 10px 18px;
-      background-color: #0f3b2d;
-      color: white;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: background-color 0.3s ease;
-    }
-    .country-button:hover {
-      background-color: #155c44;
+      filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.5));
+      border-radius: 12px;
     }
     .section {
       padding: 80px 40px;
@@ -61,21 +36,23 @@
       text-align: center;
       color: #0f3b2d;
     }
-    .logos {
+    .story {
       display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1000px;
+      margin: 40px auto;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      margin-top: 40px;
     }
-    .logos img {
-      height: 60px;
-      opacity: 0.8;
-      transition: transform 0.3s;
+    .story img {
+      width: 45%;
+      border-radius: 12px;
     }
-    .logos img:hover {
-      transform: scale(1.1);
-      opacity: 1;
+    .story-content {
+      width: 45%;
+    }
+    .story:nth-of-type(even) {
+      flex-direction: row-reverse;
     }
     form {
       max-width: 600px;
@@ -108,40 +85,6 @@
     button:hover {
       background-color: #155c44;
     }
-    .story {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 1000px;
-      margin: 40px auto;
-      flex-wrap: wrap;
-    }
-    .story img {
-      width: 45%;
-      border-radius: 12px;
-    }
-    .story-content {
-      width: 45%;
-    }
-    .story:nth-child(even) {
-      flex-direction: row-reverse;
-    }
-    .silhouettes {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      margin-top: 40px;
-    }
-    .silhouettes img {
-      height: 120px;
-      opacity: 0.7;
-      transition: transform 0.3s;
-    }
-    .silhouettes img:hover {
-      transform: scale(1.1);
-      opacity: 1;
-    }
     #cursor-particles {
       position: fixed;
       pointer-events: none;
@@ -158,81 +101,52 @@
       .then(data => document.getElementById("header-placeholder").innerHTML = data);
   </script>
 
-  <div id="globeViz"></div>
-  <div class="country-labels">
-    <button class="country-button" onclick="focusCountry('India')">India</button>
-    <button class="country-button" onclick="focusCountry('Germany')">Germany</button>
-    <button class="country-button" onclick="focusCountry('USA')">USA</button>
-    <button class="country-button" onclick="focusCountry('Australia')">Australia</button>
-    <button class="country-button" onclick="focusCountry('Japan')">Japan</button>
-    <button class="country-button" onclick="focusCountry('South Africa')">South Africa</button>
-  </div>
+  <div id="mapContainer"></div>
 
-  <section class="section">
-    <h2>Distributor Locations</h2>
-    <p style="text-align: center; max-width: 800px; margin: auto;">We currently export to over 30+ countries worldwide. Below are some of our key regions with certified distributors.</p>
-    <div class="silhouettes">
-      <img src="your-image/india-map.png" alt="India">
-      <img src="your-image/germany-map.png" alt="Germany">
-      <img src="your-image/usa-map.png" alt="USA">
-      <img src="your-image/australia-map.png" alt="Australia">
-      <img src="your-image/japan-map.png" alt="Japan">
-    </div>
-  </section>
-
-  <section class="section">
+  <div class="section">
     <h2>Success Stories</h2>
     <div class="story">
       <img src="your-image/story1.jpg" alt="Story 1">
       <div class="story-content">
-        <h3>Germany Wellness Integration</h3>
-        <p>Our distributor in Germany brought Ayurveda to urban health clinics, supporting thousands of patients with our herbal teas.</p>
+        <h3>India</h3>
+        <p>Empowering local farmers through organic cultivation training programs and ensuring market access.</p>
       </div>
     </div>
     <div class="story">
       <img src="your-image/story2.jpg" alt="Story 2">
       <div class="story-content">
-        <h3>Australian Health Retail</h3>
-        <p>In partnership with local chains, Cultivator’s products are now on shelves in over 200 Australian stores with great customer feedback.</p>
+        <h3>Germany</h3>
+        <p>Supplying premium-grade Ayurvedic ingredients to wellness leaders in the EU region.</p>
       </div>
     </div>
     <div class="story">
       <img src="your-image/story3.jpg" alt="Story 3">
       <div class="story-content">
-        <h3>USA Co-branding Success</h3>
-        <p>Our client rebranded our oils under their label, resulting in a 3x growth in revenue from North American sales within 6 months.</p>
+        <h3>USA</h3>
+        <p>Supporting American herbal brands with clean-label, traceable ingredients.</p>
       </div>
     </div>
     <div class="story">
       <img src="your-image/story4.jpg" alt="Story 4">
       <div class="story-content">
-        <h3>Japan's Boutique Wellness</h3>
-        <p>Our certified ingredients power premium spa brands and boutique herbal blends in Japan, known for their transparency and quality.</p>
+        <h3>Japan</h3>
+        <p>Introducing Ayurveda to Japanese consumers with curated organic herbal teas.</p>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section class="section">
+  <div class="section">
     <h2>Partner With Us</h2>
     <form>
-      <input type="text" placeholder="Full Name" required>
-      <input type="email" placeholder="Email Address" required>
-      <input type="text" placeholder="Company Name">
-      <textarea rows="4" placeholder="Tell us about your interest"></textarea>
-      <button type="submit">Submit Inquiry</button>
+      <input type="text" placeholder="Full Name" required><br><br>
+      <input type="email" placeholder="Email Address" required><br><br>
+      <input type="text" placeholder="Company Name"><br><br>
+      <textarea rows="4" placeholder="Your Message"></textarea><br><br>
+      <button type="submit">Submit</button>
     </form>
-  </section>
+  </div>
 
-  <section class="section">
-    <h2>Our Global Clients</h2>
-    <div class="logos">
-      <img src="your-image/logo1.png" alt="Client Logo">
-      <img src="your-image/logo2.png" alt="Client Logo">
-      <img src="your-image/logo3.png" alt="Client Logo">
-      <img src="your-image/logo4.png" alt="Client Logo">
-    </div>
-  </section>
-<div id="footer-placeholder"></div>
+  <div id="footer-placeholder"></div>
   <script>
     fetch("footer.html")
       .then(res => res.text())
@@ -280,6 +194,3 @@
   </script>
 </body>
 </html>
-  
-
-      
