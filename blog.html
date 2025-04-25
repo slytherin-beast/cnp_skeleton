@@ -7,96 +7,87 @@
   <style>
     :root {
       --cultivator-green: #0f3b2d;
-      --light-bg: #f3f8f5;
-      --card-shadow: rgba(0, 0, 0, 0.1);
+      --accent-pink: #e8d4ea;
     }
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: var(--light-bg);
+      background-color: #f3f8f5;
       color: #1d1d1d;
-    }
-    .section {
-      padding: 80px 40px;
-    }
-    .section h2 {
-      text-align: center;
-      font-size: 36px;
-      color: var(--cultivator-green);
-    }
-    .section p.description {
-      text-align: center;
-      max-width: 800px;
-      margin: 20px auto 60px auto;
-      font-size: 18px;
-      color: #444;
-    }
-    .resources-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 32px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .resource-card {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px var(--card-shadow);
-      overflow: hidden;
-      width: 300px;
-      transition: transform 0.3s ease;
-    }
-    .resource-card:hover {
-      transform: translateY(-5px);
-    }
-    .resource-card img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-    }
-    .resource-content {
-      padding: 24px;
-    }
-    .resource-content h3 {
-      font-size: 18px;
-      color: #1d1d1d;
-      margin-bottom: 10px;
-    }
-    .resource-content p {
-      font-size: 14px;
-      color: #555;
-    }
-    .resource-content a {
-      display: inline-block;
-      margin-top: 14px;
-      text-decoration: none;
-      color: var(--cultivator-green);
-      font-weight: bold;
-      font-size: 14px;
-    }
-    .load-more {
-      display: block;
-      text-align: center;
-      margin-top: 60px;
-    }
-    .load-more button {
-      padding: 12px 24px;
-      background-color: var(--cultivator-green);
-      color: white;
-      border: none;
-      border-radius: 30px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .load-more button:hover {
-      background-color: #155c44;
     }
     #cursor-particles {
       position: fixed;
       pointer-events: none;
       z-index: 9999;
+    }
+    .blog-hero {
+      text-align: center;
+      padding: 60px 20px 40px;
+    }
+    .blog-hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      border-bottom: 6px solid var(--accent-pink);
+      display: inline-block;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .blog-hero p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 18px;
+      color: #444;
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      padding: 40px;
+      max-width: 1300px;
+      margin: auto;
+    }
+    .blog-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+    .blog-card:hover {
+      transform: translateY(-6px);
+    }
+    .blog-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .blog-card-content {
+      padding: 24px;
+    }
+    .blog-card h3 {
+      font-size: 20px;
+      color: #0f3b2d;
+      margin-bottom: 10px;
+    }
+    .blog-card p {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    .blog-card a {
+      text-decoration: none;
+      background-color: var(--cultivator-green);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 24px;
+      display: inline-block;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    .blog-card a:hover {
+      background-color: #155c44;
     }
   </style>
 </head>
@@ -109,39 +100,77 @@
       .then(data => document.getElementById("header-placeholder").innerHTML = data);
   </script>
 
-  <div class="section">
-    <h2>Popular Resources & Blog</h2>
-    <p class="description">Explore our curated content library featuring expert articles, guides, videos, and case studies to deepen your understanding of Ayurveda, sustainability, and herbal innovation.</p>
-    <div class="resources-container">
-      <div class="resource-card">
-        <img src="your-image/resource1.jpg" alt="Resource 1">
-        <div class="resource-content">
-          <h3>How Clean Labels are Changing Herbal Formulation</h3>
-          <p>Explore the science and marketing impact of clean-label certifications in herbal product development.</p>
-          <a href="#">Read More →</a>
-        </div>
-      </div>
-      <div class="resource-card">
-        <img src="your-image/resource2.jpg" alt="Resource 2">
-        <div class="resource-content">
-          <h3>Top 5 Global Trends in Herbal Tea Consumption</h3>
-          <p>See how preferences for Ayurveda-based wellness brews are shaping global tea markets in 2025.</p>
-          <a href="#">Read More →</a>
-        </div>
-      </div>
-      <div class="resource-card">
-        <img src="your-image/resource3.jpg" alt="Resource 3">
-        <div class="resource-content">
-          <h3>Small MOQ, Big Impact: B2B White-Label Success</h3>
-          <p>Discover how our flexible MOQ helps startups scale with confidence in niche markets.</p>
-          <a href="#">Read More →</a>
-        </div>
-      </div>
-    </div>
-    <div class="load-more">
-      <button>Load More</button>
-    </div>
+  <div class="blog-hero">
+    <h1>Free Business Tips</h1>
+    <p>Write about the importance of these tools/products or why they should consider investing! Just let these leaves jump off the brush. Let your imagination be your guide. Anything that you believe you can do strong enough, you can do.</p>
   </div>
+
+  <section class="blog-grid">
+    <div class="blog-card">
+      <img src="your-image/story1.jpg" alt="Blog Image">
+      <div class="blog-card-content">
+        <h3>5 Reasons Why You Should Hire A Business Coach In 2024</h3>
+        <p>Let your imagination be your guide. The secret to doing anything is believing that you can.</p>
+        <a href="#">Read the Post</a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <img src="your-image/story2.jpg" alt="Blog Image">
+      <div class="blog-card-content">
+        <h3>How To Start Content Batching</h3>
+        <p>The secret to doing anything is believing that you can. Take the leap.</p>
+        <a href="#">Read the Post</a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <img src="your-image/story3.jpg" alt="Blog Image">
+      <div class="blog-card-content">
+        <h3>How I Grew To 100K Followers</h3>
+        <p>Jump off the brush. Let your creativity and belief lead your way forward.</p>
+        <a href="#">Read the Post</a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <img src="your-image/story4.jpg" alt="Blog Image">
+      <div class="blog-card-content">
+        <h3>Content Planning for Small Brands</h3>
+        <p>Success starts with vision. Discover the tools that help creators grow.</p>
+        <a href="#">Read the Post</a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <img src="your-image/story5.jpg" alt="Blog Image">
+      <div class="blog-card-content">
+        <h3>Design Systems for Creators</h3>
+        <p>Build smarter workflows with structured tools and visual planning.</p>
+        <a href="#">Read the Post</a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <img src="your-image/story6.jpg" alt="Blog Image">
+      <div class="blog-card-content">
+        <h3>Mastering Instagram Reels in 2024</h3>
+        <p>Grow your organic reach through short-form video done right.</p>
+        <a href="#">Read the Post</a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <img src="your-image/story7.jpg" alt="Blog Image">
+      <div class="blog-card-content">
+        <h3>Brand Strategy for Herbal Products</h3>
+        <p>Aligning traditional wellness values with modern branding vision.</p>
+        <a href="#">Read the Post</a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <img src="your-image/story8.jpg" alt="Blog Image">
+      <div class="blog-card-content">
+        <h3>Creating Landing Pages That Convert</h3>
+        <p>Clear CTAs, visuals and stories that sell. Here’s what works in 2024.</p>
+        <a href="#">Read the Post</a>
+      </div>
+    </div>
+  </section>
 
   <div id="footer-placeholder"></div>
   <script>
