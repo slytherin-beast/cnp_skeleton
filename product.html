@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Products</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="cursorParticles.js" defer></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f2f9f5;
+      overflow-x: hidden;
+    }
+    canvas#cursor-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .circular-deck {
+      position: relative;
+      width: 100vw;
+      height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1200px;
+      transform-style: preserve-3d;
+    }
+    .circular-inner {
+      position: relative;
+      width: 600px;
+      height: 400px;
+      transform-style: preserve-3d;
+      transform: rotateY(0deg);
+      transition: transform 1s ease;
+    }
+    .product-card {
+      position: absolute;
+      width: 160px;
+      height: 220px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.5s ease, z-index 0.5s;
+      transform-style: preserve-3d;
+    }
+    .product-card img {
+      width: 80%;
+      height: auto;
+      pointer-events: none;
+    }
+    .product-card.front {
+      transform: translateZ(150px) scale(1.1);
+      z-index: 10;
+    }
+    .product-info {
+      text-align: center;
+      margin-top: -20px;
+    }
+    .product-info h2 {
+      color: #0f3b2d;
+      font-size: 24px;
+    }
+    .product-info p {
+      color: #444;
+      font-size: 15px;
+      max-width: 600px;
+      margin: 12px auto 0;
+    }
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #0f3b2d;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 5;
+    }
+    .arrow.left { left: 10%; }
+    .arrow.right { right: 10%; }
+  </style>
+</head>
+<body>
+  <canvas id="cursor-particles"></canvas>
+  <div id="header-placeholder"></div>
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("header-placeholder").innerHTML = data);
+  </script>
+
+  <section class="circular-deck">
+    <button class="arrow left" onclick="rotateDeck(-1)">&#8592;</button>
+    <div class="circular-inner" id="deck">
+      <!-- Cards dynamically injected -->
+    </div>
+    <button class="arrow right" onclick="rotateDeck(1)">&#8594;</button>
+  </section>
+
+  <section class="product-info">
+    <h2>Featured Product: Herbal Hair Oil</h2>
+    <p>Our signature Ayurvedic blend crafted with organic herbs, deeply nourishing and 100% certified.</p>
+  </section>
+
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+  </script>
+
+  <script>
+    const deck = document.getElementById('deck');
+    const totalCards = 25;
+    const radius = 260;
+    let angleOffset = 0;
+
+    function renderDeck() {
+      deck.innerHTML = '';
+      for (let i = 0; i < totalCards; i++) {
+        const angle = (2 * Math.PI / totalCards) * i + angleOffset;
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        if (i === 0) card.classList.add('front');
+        card.style.transform = `rotateY(${angle}rad) translateZ(${radius}px)`;
+        card.innerHTML = `<img src="/images/product${(i % 6) + 1}.png" alt="Product ${i + 1}">`;
+        deck.appendChild(card);
+      }
+    }
+
+    function rotateDeck(direction) {
+      angleOffset += direction * (2 * Math.PI / totalCards);
+      renderDeck();
+    }
+
+    let isDragging = false;
+    let startX;
+
+    deck.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.clientX;
+    });
+
+    window.addEventListener('mouseup', () => isDragging = false);
+
+    window.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        const deltaX = e.clientX - startX;
+        angleOffset += deltaX * 0.005;
+        startX = e.clientX;
+        renderDeck();
+      }
+    });
+
+    renderDeck();
+  </script>
+
+  <script>
+    const canvas = document.getElementById("cursor-particles");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    let particles = [];
+    window.addEventListener("mousemove", (e) => {
+      for (let i = 0; i < 2; i++) {
+        particles.push({
+          x: e.clientX,
+          y: e.clientY,
+          size: Math.random() * 1.5 + 0.3,
+          opacity: 0.8,
+          speedX: (Math.random() - 0.5) * 1.2,
+          speedY: (Math.random() - 0.5) * 1.2
+        });
+      }
+    });
+    function handleParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particles.length; i++) {
+        let p = particles[i];
+        p.x += p.speedX;
+        p.y += p.speedY;
+        p.opacity -= 0.015;
+        if (p.opacity <= 0) {
+          particles.splice(i, 1);
+          i--;
+          continue;
+        }
+        ctx.fillStyle = `rgba(15, 59, 45, ${p.opacity})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      requestAnimationFrame(handleParticles);
+    }
+    handleParticles();
+  </script>
+</body>
+</html>
